@@ -80,7 +80,7 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
                             .let { (first, last) -> first to last} }
             val message = messagemap?.get("ERROR") ?: "Um erro desconhecido ocorreu."
             ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
-            ctx.redirect(ctx.header("Referer") ?: "/")
+            ctx.redirect(ctx.header("Referer") ?: "/inscricoes")
         }
 
         exception(java.util.NoSuchElementException::class.java) {
@@ -88,7 +88,7 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
             e, ctx ->
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
             ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
-            ctx.redirect(ctx.header("Referer") ?: "/")
+            ctx.redirect(ctx.header("Referer") ?: "/inscricoes")
         }
 
         exception(java.time.format.DateTimeParseException::class.java) {
@@ -96,7 +96,7 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
             e, ctx ->
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
             ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
-            ctx.redirect(ctx.header("Referer") ?: "/")
+            ctx.redirect(ctx.header("Referer") ?: "/inscricoes")
         }
 
         exception(FalhaSessaoException::class.java) {
@@ -104,7 +104,7 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
             e, ctx ->
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
             ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
-            ctx.redirect("/login")
+            ctx.redirect("/inscricoes/login")
         }
 
         exception(CamposVaziosException::class.java) {
@@ -112,14 +112,14 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
             e, ctx ->
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
             ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
-            ctx.redirect(ctx.header("Referer") ?: "/")
+            ctx.redirect(ctx.header("Referer") ?: "/inscricoes")
         }
 
         exception(UsuarioNaoEncontrado::class.java) {
             e, ctx ->
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
             ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
-            ctx.redirect("/login")
+            ctx.redirect("/inscricoes/login")
         }
 
         exception(Exception::class.java) {
@@ -129,7 +129,7 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
             println(message)
             println(e.stackTrace.toString())
             ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
-            ctx.redirect("/")
+            ctx.redirect("/inscricoes")
         }
     }
 }
