@@ -39,10 +39,10 @@ class IndexSisinsView(private val errormsg: String?, private var interruptor: In
                             a("/blog", classes = "link_menu desknav") { +"Blog" }
                         }
                         li {
-                            a("/alunos", classes = "link_menu desknav") { +"Alunos" }
+                            a("/inscricoes", classes = "link_menu desknav") { +"Inscrições" }
                         }
                         li {
-                            a("/adm", classes = "link_menu desknav") { +"Administrativo" }
+                            a("/login", classes = "link_menu desknav") { +"Administrativo" }
                         }
                     }
                     ul("sidenav lighten-2") {
@@ -60,10 +60,10 @@ class IndexSisinsView(private val errormsg: String?, private var interruptor: In
                             a("/blog", classes = "link_menu") { +"Blog" }
                         }
                         li {
-                            a("/alunos", classes = "link_menu") { +"Alunos" }
+                            a("/inscricoes", classes = "link_menu") { +"Inscrições" }
                         }
                         li {
-                            a("/adm", classes = "link_menu") { +"Administrativo" }
+                            a("/login", classes = "link_menu") { +"Administrativo" }
                         }
                     }
                 }

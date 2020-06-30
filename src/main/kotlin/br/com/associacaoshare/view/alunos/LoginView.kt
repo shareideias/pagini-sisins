@@ -39,7 +39,7 @@ class LoginView(private val errormsg: String?) : SisInsAlunoView() {
                             a("/blog", classes = "link_menu desknav") { +"Blog" }
                         }
                         li {
-                            a("/alunos", classes = "link_menu desknav") { +"Alunos" }
+                            a("/alunos", classes = "link_menu desknav") { +"Inscrições" }
                         }
                         li {
                             a("/adm", classes = "link_menu desknav") { +"Administrativo" }
@@ -60,7 +60,7 @@ class LoginView(private val errormsg: String?) : SisInsAlunoView() {
                             a("/blog", classes = "link_menu") { +"Blog" }
                         }
                         li {
-                            a("/alunos", classes = "link_menu") { +"Alunos" }
+                            a("/alunos", classes = "link_menu") { +"Inscrições" }
                         }
                         li {
                             a("/adm", classes = "link_menu") { +"Administrativo" }
