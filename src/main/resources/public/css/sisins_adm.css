@@ -1,0 +1,168 @@
+main {
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+body {
+    background-color: white;
+}
+
+nav {
+    /*background-image: linear-gradient(to right, #81F781, #81BEF7, #F781F3);*/ /*verde azul rosa*/
+    background-image: linear-gradient(to right, #81BEF7, #F78181, #a4e887); /*azul vermelho verde*/
+}
+
+.desknav {
+    color: white !important;
+}
+
+.imagem_logo {
+    height: 65px;
+    padding: .1em;
+}
+
+p {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: 0;
+    padding-left: 2em;
+}
+
+.statusavaliacao{
+    padding-left: 0;
+}
+
+b {
+    margin: 0;
+}
+
+article {
+    border: .1em solid #FAFAFA;
+    background: #FBEFF2;
+    margin: 0;
+}
+
+.borda-curso{
+    border: none;
+}
+
+.botoes {
+    margin-bottom: 150px;
+    margin-top: 10px;
+}
+
+.botaoabrir{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 158px;
+    margin-bottom: 17px;
+}
+
+.botaofechar{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 171px;
+    margin-bottom: 17px;
+}
+
+.formexclusao{
+    width: 100%;
+}
+
+.botoesexclusao{
+    width: 200px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.botao {
+    float: left;
+    margin: 5px;
+
+}
+
+.check {
+    float: left;
+    margin: 5px;
+}
+
+body {
+    background-color: white;
+}
+
+header {
+    /*background-image: linear-gradient(to right, #81F781, #81BEF7, #F781F3);*/ /*verde azul rosa*/
+    background-image: linear-gradient(to right, #81BEF7, #F78181, #F781F3); /*azul vermelho rosa*/
+}
+
+.link_menu {
+    color: black;
+}
+
+.imagem_logo {
+    height: 65px;
+    padding: .1em;
+}
+
+h3 {
+    text-align: center;
+}
+
+.mais {
+    font-size: 103px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+body {
+    background-color: white;
+}
+
+header {
+    /*background-image: linear-gradient(to right, #81F781, #81BEF7, #F781F3);*/ /*verde azul rosa*/
+    background-image: linear-gradient(to right, #81BEF7, #F78181, #F781F3); /*azul vermelho rosa*/
+}
+
+.link_menu {
+    color: black;
+}
+
+.imagem_logo {
+    height: 65px;
+    padding: .1em;
+}
+
+h3, h4, h5 {
+    text-align: center;
+}
+
+.par_news{
+    padding-left: 0;
+}
+
+.rowzeras{
+    width: 80ch;
+}
+
+.invisible{
+    display: none;
+}
+
+.coursecard{
+    height: 425px;
+}
+
+@media screen and (max-width: 776px){
+    .rowzeras{
+        width: 40ch;
+    }
+}
+
+@media screen and (max-width: 393px){
+    .rowzeras{
+        width: 30ch;
+    }
+}

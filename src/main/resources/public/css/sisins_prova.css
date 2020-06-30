@@ -1,0 +1,77 @@
+body{
+    background-color: #FAFAFA;
+}
+.row{
+    width: 40ch;
+}
+
+.logo{
+    height: 10em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+}
+
+h3{
+    text-align: center;
+    margin-top: 0;
+}
+
+.entrar{
+    background-color: #04B404;
+    color: white;
+    font-weight: bold;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0.75em;
+}
+
+.btn{
+    width: 26ch;
+    height: 4em;
+}
+
+.input-field.col label{
+    color: black;
+    font-size: 15px;
+}
+
+span{
+    padding-bottom: 3em;
+}
+
+.pular option{
+    margin-top: 80px;
+}
+
+h6, form{
+    min-width: 339px;
+    max-width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.textinho{
+    color: #9e9e9e;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 650px){
+   h6{
+       margin-left: 1em;
+       margin-right: 1em;
+   }
+
+}
+
+@media screen and (max-width: 620px){
+    form{
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+
+}

@@ -1,0 +1,69 @@
+body{
+    background-color: #FAFAFA;
+}
+
+.logo{
+    height: 10em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+}
+
+
+h3{
+    text-align: center;
+    margin-top: 0;
+}
+
+h4{
+    text-align: center;
+    margin-top: 0;
+}
+
+.obscadastro{
+    color: red;
+    text-align: center;
+}
+
+/*.entrar{
+    border: 20px solid #04B404;
+    background-color: #04B404;
+    text-align: center;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}*/
+
+.btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 2em;
+    font-weight: bold;
+}
+
+/*.input-field.col label{
+    color: black;
+    font-size: 15px;
+}*/
+
+option{
+    margin-top: 80px;
+}
+
+.row{
+    width: 80ch;
+}
+
+@media screen and (max-width: 676px){
+    .row{
+        width: 40ch;
+    }
+}

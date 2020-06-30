@@ -1,0 +1,50 @@
+/* Public Footer */
+.public-footer {
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.social-networks a {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    font-size: 0;
+    margin-left: .25px;
+    margin-right: .25px;
+}
+
+.social-networks li {
+    display: inline;
+}
+
+
+.img-fb-footer{
+    background-image: url(../img/icon/fbm_white.png);
+    width: 32px;
+    height: 32px;
+}
+
+.img-ig-footer{
+    background-image: url(../img/icon/igm_white.png);
+    width: 32px;
+    height: 32px;
+}
+
+.img-ln-footer{
+    background-image: url(../img/icon/lnm_white.png);
+    width: 32px;
+    height: 32px;
+}
+
+.img-fb{
+    background-image: url(../img/icon/fbm.png);
+}
+
+.img-wpp {
+    background-image: url(../img/icon/wpp.png);
+}
+
+.img-ln{
+    background-image: url(../img/icon/lnm.png);
+}

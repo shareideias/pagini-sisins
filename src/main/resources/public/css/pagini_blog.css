@@ -1,0 +1,13 @@
+.section-title{
+    text-align: center;
+    font-family: ShareTitulo;
+}
+
+.card-content{
+    padding-top: 1px !important;
+    padding-bottom: 0 !important;
+}
+
+.post-title{
+    font-size: 2.3rem;
+}

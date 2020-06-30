@@ -1,0 +1,93 @@
+body{
+    background-color: #FAFAFA;
+    margin-top: -10px;
+}
+
+.row {
+    margin-top: 28px;
+}
+
+h5 {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.card{
+    background-color: #FAFAFA;
+    border: 0 solid #FAFAFA;
+    box-shadow: 0px 0px 0px 0px;
+}
+
+.logo{
+    max-height: 20em;
+    max-width: 20em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6em;
+}
+
+.board{
+    /*border: 1px solid #F2F2F2;*/
+    height: 35em;
+    width: 40ch;
+    margin-top: 0.3em;
+    background-color: #FAFAFA;
+    box-shadow: 0px 2px 13px 2px rgba(50, 50, 50, 0.4);
+    overflow:scroll;
+    overflow:auto;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.title{
+    float: left;
+}
+
+.addform{
+    float: left;
+    width: 30% !important;
+    margin-bottom: 0;
+}
+
+.invisible{
+    display: none;
+}
+
+.horario{
+    text-align: start;
+}
+
+.btn {
+    margin-top: 2em;
+    background-color: #FF8000;
+    color: white;
+    font-weight: bold;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25ch;
+    height: 3em;
+    padding-top: 0.25em;
+}
+
+
+@media screen and (max-width: 366px){
+    .board{
+       box-shadow: 0px 0px 0px 0px;
+        padding-right: 1em;
+    }
+    .logo{
+        margin-top: 0px;
+        margin-left: 2.5em;
+    }
+    .btn{
+        margin-top: 0px;
+        margin-left: 3.5em;
+    }
+    h5{
+        margin-left: 1.5em;
+    }
+
+}

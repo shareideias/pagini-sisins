@@ -1,0 +1,35 @@
+body{
+    background-color: #FAFAFA;
+}
+
+.logo{
+    height: 10em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+}
+
+h3{
+    text-align: center;
+    margin-top: 0;
+}
+
+.row{
+   width: 80ch;
+}
+
+.btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 2em;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 661px){
+    .row{
+        width: 40ch;
+    }
+}

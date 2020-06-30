@@ -1,0 +1,21 @@
+/*noinspection CssInvalidPropertyValue*/
+h1 {
+    font-size: 10rem;
+
+    background-image: linear-gradient(to right, #81BEF7, #F78181, #F781F3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow_animation 6s ease-in-out infinite;
+    background-size: 400% 100%;
+}
+
+@keyframes rainbow_animation {
+    0%, 100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+}

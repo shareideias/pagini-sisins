@@ -1,0 +1,84 @@
+/* Navbar */
+header{
+    /*background-image: linear-gradient(to right, #81F781, #81BEF7, #F781F3);*/ /*verde azul rosa*/
+    background-image: linear-gradient(to right, #81BEF7, #F78181, #a4e887); /*azul vermelho verde*/
+    background-size: cover;
+    background-position: center;
+}
+
+.share-brand {
+    height: 56px;
+    padding: .2em;
+}
+
+@media only screen and (min-width: 601px) {
+    .share-brand {
+        height: 64px;
+    }
+}
+
+/* All <p> tags are now justified by default. */
+p, .justify {
+    text-align: justify;
+}
+
+/* Underlined */
+.underlined {
+    border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+    padding-bottom: 5px;
+    margin: .75rem;
+}
+
+.col > .underlined {
+    margin: .75rem 0;
+}
+
+.underlined.hr {
+    padding: 0;
+}
+
+/* background color support on <code> tags */
+code {
+    padding: 2px;
+    border-radius: 2.5px;
+}
+
+/* Support for old <span> styling */
+.bold {
+    font-weight: bold;
+}
+
+/* Article info, like date and author */
+.article-info {
+    margin-top: -1rem;
+    color: #9e9e9e;
+    font-style: italic;
+}
+
+/* The most useful helper class in the world */
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.compartilhamento-titulo{
+    font-weight: bold;
+    margin-bottom: 0 !important;
+    margin-top: 10px !important;
+}
+
+.social-sharing{
+    margin-top: 0;
+}
+
+.social-sharing a {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    font-size: 0;
+    margin-left: .25px;
+    margin-right: .25px;
+}
+
+.social-sharing li {
+    display: inline;
+}

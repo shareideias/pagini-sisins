@@ -1,0 +1,52 @@
+@font-face {
+    font-family: ShareTitulo;
+    src: url(PlaylistScript.otf);
+}
+
+h1{
+    text-align: center;
+    font-family: ShareTitulo;
+}
+
+.titulo_faq{
+    margin-bottom: 0;
+}
+
+h2, h3{
+    margin: 0.3em;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.texto_faq_titulo{
+    margin-bottom: 2em;
+}
+
+.collapsible-header{
+    border-color: white;
+}
+
+.collapsible-body{
+    border-color: white;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.ultimo{
+    padding-bottom: 1em;
+}
+
+.collapsible-header:hover{
+    color: #616161;
+    opacity: 0.6;
+    transition: 0.20s;
+}
+
+.public-footer{
+    text-align: center;
+    margin-top: 10em;
+    padding-bottom: 1em;
+    padding-top: 0.5em;
+    margin-bottom: -5px;
+}
