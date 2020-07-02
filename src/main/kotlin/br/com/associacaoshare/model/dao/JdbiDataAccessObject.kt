@@ -212,9 +212,9 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
                 FOR EACH ROW EXECUTE PROCEDURE verificaEmail();
             """.trimIndent())
 
-            /*if (it.createQuery("SELECT COUNT(id) FROM sisins_avaliador").mapTo<Int>().one() < 1) {
-                val adminId = insertAvaliador("admin", "admin", "Avaliador1")
-            }*/
+            if (it.createQuery("SELECT COUNT(id) FROM sisins_avaliador").mapTo<Int>().one() < 1) {
+                val adminId = insertAvaliador("sisins.share", "learningjuntos", "Share")
+            }
 
             if (it.createQuery("SELECT COUNT(open) FROM sisins_inscricoes").mapTo<Int>().one() < 1) {
                 insertInterruptor()

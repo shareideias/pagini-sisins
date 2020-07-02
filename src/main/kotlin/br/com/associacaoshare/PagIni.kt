@@ -38,6 +38,7 @@ fun main() {
     app.routes(StubController(kodein)).start(port)
 
     app.routes {
+        StubController(kodein).addEndpoints()
         PublicController(kodein).addEndpoints()
         LoginController(kodein).addEndpoints()
         path("admin") {
