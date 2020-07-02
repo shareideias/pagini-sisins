@@ -2,7 +2,7 @@ package br.com.associacaoshare.controller
 
 import br.com.associacaoshare.controller.security.ContentType
 import br.com.associacaoshare.controller.security.ForbiddenAccessException
-import br.com.associacaoshare.controller.security.MainRole.SUPERADMIN
+import br.com.associacaoshare.controller.security.ShareAccessManager.MainRole.SUPERADMIN
 import br.com.associacaoshare.controller.security.UnableToEditException
 import br.com.associacaoshare.model.Usuario
 import br.com.associacaoshare.model.dao.DataAccessObject

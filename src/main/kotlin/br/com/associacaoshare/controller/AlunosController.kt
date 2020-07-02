@@ -1,6 +1,6 @@
 package br.com.associacaoshare.controller
 
-import br.com.associacaoshare.controller.SisinsAccessManager.Roles.*
+import br.com.associacaoshare.controller.security.ShareAccessManager.Roles.*
 import br.com.associacaoshare.model.Participante
 import br.com.associacaoshare.model.dao.DataAccessObject
 import br.com.associacaoshare.model.exception.FalhaSessaoException

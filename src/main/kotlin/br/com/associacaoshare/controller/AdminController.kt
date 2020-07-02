@@ -1,8 +1,8 @@
 package br.com.associacaoshare.controller
 
 import br.com.associacaoshare.controller.security.ContentType
-import br.com.associacaoshare.controller.security.MainRole.ADMIN
-import br.com.associacaoshare.controller.security.MainRole.SUPERADMIN
+import br.com.associacaoshare.controller.security.ShareAccessManager.MainRole.ADMIN
+import br.com.associacaoshare.controller.security.ShareAccessManager.MainRole.SUPERADMIN
 import br.com.associacaoshare.controller.security.UnableToEditException
 import br.com.associacaoshare.model.Pagina
 import br.com.associacaoshare.model.Usuario

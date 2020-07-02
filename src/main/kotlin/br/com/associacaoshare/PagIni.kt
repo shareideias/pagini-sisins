@@ -31,7 +31,7 @@ fun main() {
     }
 
     val app = Javalin.create { cfg ->
-        cfg.accessManager(SisinsAccessManager())
+        cfg.accessManager(ShareAccessManager())
         cfg.addStaticFiles("public")
     }
 
