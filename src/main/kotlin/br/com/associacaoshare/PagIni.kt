@@ -35,8 +35,6 @@ fun main() {
         cfg.addStaticFiles("public")
     }
 
-    app.routes(StubController(kodein)).start(port)
-
     app.routes {
         StubController(kodein).addEndpoints()
         PublicController(kodein).addEndpoints()
