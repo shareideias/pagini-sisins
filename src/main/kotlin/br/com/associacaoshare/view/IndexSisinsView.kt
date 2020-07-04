@@ -17,9 +17,9 @@ class IndexSisinsView(private val errormsg: String?, private var interruptor: In
         header{
             nav("nav-wrapper transparent") {
                 div("container") {
-                    /*a("brand-logo") {
+                    a("/") {
                         img("Logo da Share", "/img/navbar-brand.png", "share-brand")
-                    }*/
+                    }
                     a("#", classes = "sidenav-trigger") {
                         attributes["data-target"] = "mobile-menu"
                         i("material-icons") { +"menu" }
@@ -39,7 +39,7 @@ class IndexSisinsView(private val errormsg: String?, private var interruptor: In
                             a("/blog", classes = "link_menu desknav") { +"Blog" }
                         }
                         li {
-                            a("/alunos", classes = "link_menu desknav") { +"Alunos" }
+                            a("/alunos", classes = "link_menu desknav") { +"Inscrições" }
                         }
                         li {
                             a("/adm", classes = "link_menu desknav") { +"Administrativo" }
@@ -60,7 +60,7 @@ class IndexSisinsView(private val errormsg: String?, private var interruptor: In
                             a("/blog", classes = "link_menu") { +"Blog" }
                         }
                         li {
-                            a("/alunos", classes = "link_menu") { +"Alunos" }
+                            a("/inscricoes", classes = "link_menu") { +"Inscrições" }
                         }
                         li {
                             a("/adm", classes = "link_menu") { +"Administrativo" }

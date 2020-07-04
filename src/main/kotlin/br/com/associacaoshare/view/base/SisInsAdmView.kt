@@ -31,7 +31,7 @@ abstract class SisInsAdmView : HtmlBuilderView() {
     private fun HEADER.renderHeader() {
         nav(classes = "nav-wrapper transparent") {
             div(classes = "container") {
-                a(href = "cursos.html", classes = "brand-logo") {
+                a(href = "/", classes = "brand-logo") {
                     img(classes = "imagem_logo", alt = "Logo da Share", src = "/img/globo.png")
                 }
                 a(href = "", classes = "sidenav-trigger") {

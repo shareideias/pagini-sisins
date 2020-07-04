@@ -24,7 +24,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
         if (interruptor == 0) {
             h4 { +"As inscrições estão fechadas no momento. Confira as datas do próximo processo seletivo para alunos." }
         } else if (interruptor == 1){
-            p("obscadastro"){+"*preencha obrigatoriamente todos os campos."}
+            p("obscadastro"){+"* Preencha obrigatoriamente todos os campos."}
             div("row") {
                 form("CadastroProc", classes = "col s12", method = FormMethod.post) {
                     div("input-field col s12 mb-0") {
