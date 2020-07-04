@@ -31,13 +31,12 @@ fun main() {
     }
 
     val app = Javalin.create { cfg ->
-        cfg.accessManager(SisinsAccessManager())
+        cfg.accessManager(ShareAccessManager())
         cfg.addStaticFiles("public")
     }
 
-    app.routes(StubController(kodein)).start(port)
-
     app.routes {
+        StubController(kodein).addEndpoints()
         PublicController(kodein).addEndpoints()
         LoginController(kodein).addEndpoints()
         path("admin") {

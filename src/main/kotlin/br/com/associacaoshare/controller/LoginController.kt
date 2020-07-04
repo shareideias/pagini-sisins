@@ -1,7 +1,7 @@
 package br.com.associacaoshare.controller
 
-import br.com.associacaoshare.controller.security.MainRole
 import br.com.associacaoshare.controller.security.ShareAccessManager
+import br.com.associacaoshare.controller.security.ShareAccessManager.MainRole
 import br.com.associacaoshare.model.Usuario
 import br.com.associacaoshare.model.dao.DataAccessObject
 import br.com.associacaoshare.model.page.PagIniModel

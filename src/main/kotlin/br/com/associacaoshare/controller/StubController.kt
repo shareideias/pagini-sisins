@@ -43,7 +43,7 @@ class StubController(override val kodein: Kodein) : EndpointGroup, KodeinAware {
         val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
         if(errormsg != null)
             ctx.cookie("errorMsg", "", 0)
-        var interruptor = dao.getInterruptor()
+        val interruptor = dao.getInterruptor()
         IndexSisinsView(errormsg, interruptor).render(ctx)
     }
 
@@ -51,14 +51,15 @@ class StubController(override val kodein: Kodein) : EndpointGroup, KodeinAware {
         val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
         if(errormsg != null)
             ctx.cookie("errorMsg", "", 0)
-        var interruptor = dao.getInterruptor()
+        val interruptor = dao.getInterruptor()
         CadastroView(errormsg, interruptor).render(ctx)
     }
 
     private fun cadastroProc (ctx: Context) {
         val resp = ctx.formParamMap()
         val novoParticipante: Participante = dao.insertParticipante(resp)
-        ctx.redirect("/inscricoes/login")
+        loginRoutine(ctx, novoParticipante)
+        ctx.redirect("/inscricoes/alunos")
     }
 
     private fun login (ctx: Context) {

@@ -17,9 +17,9 @@ class LoginView(private val errormsg: String?) : SisInsAlunoView() {
         header{
             nav("nav-wrapper transparent") {
                 div("container") {
-                    /*a("brand-logo") {
+                    a("/") {
                         img("Logo da Share", "/img/navbar-brand.png", "share-brand")
-                    }*/
+                    }
                     a("#", classes = "sidenav-trigger") {
                         attributes["data-target"] = "mobile-menu"
                         i("material-icons") { +"menu" }
@@ -39,7 +39,7 @@ class LoginView(private val errormsg: String?) : SisInsAlunoView() {
                             a("/blog", classes = "link_menu desknav") { +"Blog" }
                         }
                         li {
-                            a("/alunos", classes = "link_menu desknav") { +"Inscrições" }
+                            a("/inscricoes", classes = "link_menu desknav") { +"Inscrições" }
                         }
                         li {
                             a("/adm", classes = "link_menu desknav") { +"Administrativo" }
@@ -60,7 +60,7 @@ class LoginView(private val errormsg: String?) : SisInsAlunoView() {
                             a("/blog", classes = "link_menu") { +"Blog" }
                         }
                         li {
-                            a("/alunos", classes = "link_menu") { +"Inscrições" }
+                            a("/inscricoes", classes = "link_menu") { +"Inscrições" }
                         }
                         li {
                             a("/adm", classes = "link_menu") { +"Administrativo" }
