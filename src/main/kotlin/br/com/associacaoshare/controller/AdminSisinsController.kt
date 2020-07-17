@@ -16,6 +16,7 @@ import java.net.URLDecoder
 
 class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, KodeinAware {
     val dao: DataAccessObject by instance()
+    val utf8 = Charsets.UTF_8.toString()
 
     override fun addEndpoints() {
         get(::cursos, roles(AVALIADOR))
@@ -54,7 +55,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun cursos(ctx: Context) {
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         var interruptor = dao.getInterruptor()
@@ -62,7 +63,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun inscricoes(ctx: Context) {
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
@@ -76,7 +77,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun inscricoesgerais(ctx: Context) {
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 
@@ -86,7 +87,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun candidato(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val candidato = ctx.queryParam("id")?.toInt()?.let{dao.getParticipante(it)}
@@ -110,7 +111,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun perfildocandidato(ctx: Context) {
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val participante = ctx.queryParam("id")?.toInt()?.let{dao.getParticipante(it)}
@@ -137,7 +138,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun addCurso(ctx: Context) {
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 
@@ -145,7 +146,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun adicionaCurso(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 
@@ -159,7 +160,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun addProva(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 
@@ -169,7 +170,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun adicionaProva(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
@@ -185,7 +186,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun excluircurso(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
@@ -195,7 +196,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun cursoexcluido(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
@@ -208,7 +209,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun editarcurso(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
@@ -218,7 +219,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun cursoeditado(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 
@@ -240,7 +241,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun editarprova(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
@@ -250,7 +251,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun provaeditada(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 
@@ -276,7 +277,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun aprova(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 
@@ -295,7 +296,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun listadeespera(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 
@@ -314,7 +315,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun desistencia(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 
@@ -333,7 +334,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun reprova(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 
@@ -352,7 +353,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     }
 
     private fun deleteuser(ctx: Context){
-        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, Charsets.UTF_8) }
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
 

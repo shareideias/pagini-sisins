@@ -20,6 +20,7 @@ import kotlin.text.Charsets.UTF_8
 
 class StubController(override val kodein: Kodein) : EndpointGroup, KodeinAware {
     val dao: DataAccessObject by instance()
+    val utf8 = UTF_8.toString()
 
     override fun addEndpoints() {
         get("inscricoes", ::indexsisins)
@@ -40,7 +41,7 @@ class StubController(override val kodein: Kodein) : EndpointGroup, KodeinAware {
     }
 
     private fun indexsisins (ctx: Context) {
-        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
+        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , utf8)}
         if(errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val interruptor = dao.getInterruptor()
@@ -48,7 +49,7 @@ class StubController(override val kodein: Kodein) : EndpointGroup, KodeinAware {
     }
 
     private fun cadastro (ctx: Context) {
-        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
+        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , utf8)}
         if(errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val interruptor = dao.getInterruptor()
@@ -63,7 +64,7 @@ class StubController(override val kodein: Kodein) : EndpointGroup, KodeinAware {
     }
 
     private fun login (ctx: Context) {
-        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
+        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , utf8)}
         if(errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         LoginView(errormsg).render(ctx)

@@ -18,6 +18,7 @@ import java.net.URLEncoder
 
 class ErrorHandler(override val kodein: Kodein) : KodeinAware {
     val dao: DataAccessObject by instance()
+    val utf8 = Charsets.UTF_8.toString()
     fun Javalin.addErrorHandlers() {
         exception(NotFoundException::class.java) { e, ctx ->
             ErrorView(ErrorViewModel(
@@ -79,7 +80,7 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
                     ?.associate { it.split(": ")
                             .let { (first, last) -> first to last} }
             val message = messagemap?.get("ERROR") ?: "Um erro desconhecido ocorreu."
-            ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
+            ctx.cookie("errorMsg", URLEncoder.encode(message, utf8))
             ctx.redirect(ctx.header("Referer") ?: "/inscricoes")
         }
 
@@ -87,7 +88,7 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
             //Faltou um campo obrigatório
             e, ctx ->
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
-            ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
+            ctx.cookie("errorMsg", URLEncoder.encode(message, utf8))
             ctx.redirect(ctx.header("Referer") ?: "/inscricoes")
         }
 
@@ -95,7 +96,7 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
             //Erro no parsing, pode não ter sido preenchido
             e, ctx ->
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
-            ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
+            ctx.cookie("errorMsg", URLEncoder.encode(message, utf8))
             ctx.redirect(ctx.header("Referer") ?: "/inscricoes")
         }
 
@@ -103,7 +104,7 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
             //Exception lançada pelo sisins para o usuário refazer a sessão no login
             e, ctx ->
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
-            ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
+            ctx.cookie("errorMsg", URLEncoder.encode(message, utf8))
             ctx.redirect("/inscricoes/login")
         }
 
@@ -111,14 +112,14 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
             //Exception lançada pelo sisins quando um campo obrigatório não foi preenchido
             e, ctx ->
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
-            ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
+            ctx.cookie("errorMsg", URLEncoder.encode(message, utf8))
             ctx.redirect(ctx.header("Referer") ?: "/inscricoes")
         }
 
         exception(UsuarioNaoEncontrado::class.java) {
             e, ctx ->
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
-            ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
+            ctx.cookie("errorMsg", URLEncoder.encode(message, utf8))
             ctx.redirect("/inscricoes/login")
         }
 
@@ -128,7 +129,7 @@ class ErrorHandler(override val kodein: Kodein) : KodeinAware {
             val message = (e.message) ?: "Um erro desconhecido ocorreu."
             println(message)
             println(e.stackTrace.toString())
-            ctx.cookie("errorMsg", URLEncoder.encode(message, Charsets.UTF_8))
+            ctx.cookie("errorMsg", URLEncoder.encode(message, utf8))
             ctx.redirect("/inscricoes")
         }
     }

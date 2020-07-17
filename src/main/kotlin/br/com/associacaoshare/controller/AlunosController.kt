@@ -19,6 +19,7 @@ import kotlin.text.Charsets.UTF_8
 
 class AlunosController (override val kodein: Kodein) : EndpointGroup, KodeinAware {
     val dao: DataAccessObject by instance()
+    val utf8 = UTF_8.toString()
 
     override fun addEndpoints() {
         get(::inscricoes, roles(PARTICIPANTE))
@@ -45,7 +46,7 @@ class AlunosController (override val kodein: Kodein) : EndpointGroup, KodeinAwar
         val participante = ctx.sessionAttribute<Int?>("ID")?.let { dao.getParticipante(it) }
         val curso1 = ctx.sessionAttribute<Int?>("ID")?.let { dao.getCurso(participante!!.curso1_id) }
         val curso2 = ctx.sessionAttribute<Int?>("ID")?.let { dao.getCurso(participante!!.curso2_id) }
-        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
+        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , utf8)}
         var interruptor = dao.getInterruptor()
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
@@ -58,7 +59,7 @@ class AlunosController (override val kodein: Kodein) : EndpointGroup, KodeinAwar
 
     private fun edicao (ctx: Context) {
         val participante = ctx.sessionAttribute<Int?>("ID")?.let { dao.getParticipante(it) }
-        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
+        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , utf8)}
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         if(participante != null) {
@@ -80,7 +81,7 @@ class AlunosController (override val kodein: Kodein) : EndpointGroup, KodeinAwar
 
     private fun listacurso1 (ctx: Context) {
         val participante = ctx.sessionAttribute<Int?>("ID")?.let { dao.getParticipante(it) }
-        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
+        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , utf8)}
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         var interruptor = dao.getInterruptor()
@@ -118,7 +119,7 @@ class AlunosController (override val kodein: Kodein) : EndpointGroup, KodeinAwar
 
     private fun prova (ctx: Context) {
         val participante = ctx.sessionAttribute<Int?>("ID")?.let { dao.getParticipante(it) }
-        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
+        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , utf8)}
         val curso = ctx.queryParam("id")?.toInt().let { dao.getCurso(it) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
@@ -141,7 +142,7 @@ class AlunosController (override val kodein: Kodein) : EndpointGroup, KodeinAwar
 
     private fun listacurso2 (ctx: Context) {
         val participante = ctx.sessionAttribute<Int?>("ID")?.let { dao.getParticipante(it) }
-        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
+        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , utf8)}
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         var interruptor = dao.getInterruptor()
@@ -178,7 +179,7 @@ class AlunosController (override val kodein: Kodein) : EndpointGroup, KodeinAwar
 
     private fun prova2 (ctx: Context) {
         val participante = ctx.sessionAttribute<Int?>("ID")?.let { dao.getParticipante(it) }
-        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , UTF_8)}
+        val errormsg = ctx.cookie("errorMsg")?.let{decode(it , utf8)}
         val curso = ctx.queryParam("id")?.toInt().let { dao.getCurso(it) }
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
