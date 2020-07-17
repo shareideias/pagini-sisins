@@ -237,7 +237,7 @@ class AlunosController (override val kodein: Kodein) : EndpointGroup, KodeinAwar
             participante.id.let { dao.updateResultado2(it, 2) }
         }
         else{
-            participante.id.let { dao.updateResultado2(it, -1) }
+            participante.id.let { dao.updateResultado2(it, 2) }
         }
     }
 

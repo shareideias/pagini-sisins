@@ -6,15 +6,16 @@ import br.com.associacaoshare.view.base.SisInsAlunoView
 import io.javalin.http.Context
 import kotlinx.html.*
 
-class InscricoesAlunoView(private val errormsg: String?, private val participante: Participante, private val curso1: Curso?, private val curso2: Curso?, private var interruptor: Int)  : SisInsAlunoView() {
+class InscricoesAlunoView(private val errormsg: String?, private val participante: Participante, private val curso1: Curso?, private val curso2: Curso?, private var interruptor: Int) : SisInsAlunoView() {
     override val pageTitle: String
         get() = "Inscrição Share"
+
     override fun BODY.renderBody(ctx: Context) {
         link(type = "text/css", rel = "stylesheet", href = "/css/sisins_inscricoes.css")
 
         link(type = "text/css", rel = "stylesheet", href = "/css/alerts.css")
 
-        header{
+        header {
             nav("nav-wrapper transparent") {
                 div("container") {
                     /*a("brand-logo") {
@@ -48,27 +49,27 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
             }
         }
 
-        div("row"){
+        div("row") {
             div("col s12 m0 l3")
-            div("col s12 m12 l3"){
-                div("card"){
-                    div("card-image"){
+            div("col s12 m12 l3") {
+                div("card") {
+                    div("card-image") {
                         img("Logo da Share", "../img/share-logo.png", "logo")
                     }
                 }
             }
-            div("center col s12 m12 l3"){
-                a("/inscricoes/alunos/editar", classes = "center atualizar waves-effect waves-light btn"){
+            div("center col s12 m12 l3") {
+                a("/inscricoes/alunos/editar", classes = "center atualizar waves-effect waves-light btn") {
                     +"Atualizar perfil"
                 }
                 h5 { +"Seus cursos:" }
 
-                if(interruptor == 0)
-                    h6{+"As inscrições estão fechadas no momento."}
+                if (interruptor == 0)
+                    h6 { +"As inscrições estão fechadas no momento." }
 
-                ul("collection with-header"){
+                ul("collection with-header") {
 
-                    if(participante.curso1_id == curso1?.id && participante.curso1_id != null){
+                    if (participante.curso1_id == curso1?.id && participante.curso1_id != null) {
                         li("collection-item bigitem") {
                             span("title") {
                                 b {
@@ -86,7 +87,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                                         value = curso1.id.toString()
                                     }
                                 }
-                                if(interruptor == 1) {
+                                if (interruptor == 1) {
                                     button(type = ButtonType.submit, classes = "secondary-content") {
                                         i("material-icons") { +"delete" }
                                     }
@@ -101,11 +102,11 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                             }
                         }
 
-                    } else{
+                    } else {
                         li("collection-item") {
                             div {
                                 i { +"Curso não selecionado" }
-                                if(interruptor == 1) {
+                                if (interruptor == 1) {
                                     a("/inscricoes/alunos/curso1", classes = "secondary-content") {
                                         i("material-icons") { +"add" }
                                     }
@@ -114,7 +115,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                         }
                     }
 
-                    if(participante.curso2_id == curso2?.id && participante.curso2_id != null){
+                    if (participante.curso2_id == curso2?.id && participante.curso2_id != null) {
                         li("collection-item bigitem") {
                             span("title") {
                                 b {
@@ -132,7 +133,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                                         value = curso2.id.toString()
                                     }
                                 }
-                                if(interruptor == 1) {
+                                if (interruptor == 1) {
                                     button(type = ButtonType.submit, classes = "secondary-content") {
                                         i("material-icons") { +"delete" }
                                     }
@@ -146,11 +147,11 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                                 }
                             }
                         }
-                    } else{
+                    } else {
                         li("collection-item") {
                             div {
                                 i { +"Curso não selecionado" }
-                                if(interruptor == 1) {
+                                if (interruptor == 1) {
                                     a("/inscricoes/alunos/curso2", classes = "secondary-content") {
                                         i("material-icons") { +"add" }
                                     }
@@ -159,6 +160,8 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                         }
                     }
                 }
+                h6 { +"Obs: A segunda opção do curso é direcionado automaticamente" }
+                h6 { +" para a lista de espera." }
             }
         }
     }
