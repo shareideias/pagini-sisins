@@ -46,6 +46,9 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         get("abreinscricoes", ::abreinscricoes, roles(AVALIADOR))
         get("fechainscricoes", ::fechainscricoes, roles(AVALIADOR))
 
+        get("exibirresultados", ::exibirresultados, roles(AVALIADOR))
+        get("ocultarresultados", ::ocultarresultados, roles(AVALIADOR))
+
         get("aprova", ::aprova, roles(AVALIADOR))
         get("listadeespera", ::listadeespera, roles(AVALIADOR))
         get("desistencia", ::desistencia, roles(AVALIADOR))
@@ -59,7 +62,8 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         var interruptor = dao.getInterruptor()
-        CursosView(errormsg, dao.allCurso(), interruptor).render(ctx)
+        var resultados = dao.getResultado()
+        CursosView(errormsg, dao.allCurso(), interruptor, resultados).render(ctx)
     }
 
     private fun inscricoes(ctx: Context) {
@@ -273,6 +277,16 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
 
     private fun fechainscricoes(ctx: Context) {
         dao.updateInterruptor(0)
+        ctx.redirect("/inscricoes/adm")
+    }
+
+    private fun exibirresultados(ctx: Context) {
+        dao.updateResultadoAvaliacao(1)
+        ctx.redirect("/inscricoes/adm")
+    }
+
+    private fun ocultarresultados(ctx: Context) {
+        dao.updateResultadoAvaliacao(0)
         ctx.redirect("/inscricoes/adm")
     }
 

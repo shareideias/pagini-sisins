@@ -48,10 +48,11 @@ class AlunosController (override val kodein: Kodein) : EndpointGroup, KodeinAwar
         val curso2 = ctx.sessionAttribute<Int?>("ID")?.let { dao.getCurso(participante!!.curso2_id) }
         val errormsg = ctx.cookie("errorMsg")?.let{decode(it , utf8)}
         var interruptor = dao.getInterruptor()
+        var resultados = dao.getResultado()
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         if(participante != null) {
-            InscricoesAlunoView(errormsg, participante, curso1, curso2, interruptor).render(ctx)
+            InscricoesAlunoView(errormsg, participante, curso1, curso2, interruptor, resultados).render(ctx)
         } else {
             throw FalhaSessaoException()
         }

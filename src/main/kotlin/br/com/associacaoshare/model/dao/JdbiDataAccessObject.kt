@@ -191,7 +191,8 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
             it.execute("""
                 CREATE TABLE IF NOT EXISTS sisins_inscricoes(
                     id INT,
-                    open INT
+                    open INT,
+                    result INT
                 )
                 """.trimIndent())
 
@@ -218,6 +219,9 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
 
             if (it.createQuery("SELECT COUNT(open) FROM sisins_inscricoes").mapTo<Int>().one() < 1) {
                 insertInterruptor()
+            }
+            if (it.createQuery("SELECT COUNT(result) FROM sisins_inscricoes").mapTo<Int>().one() < 1) {
+                insertResultado()
             }
         }
     }
@@ -593,7 +597,13 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
                     .one()
         }
     }
-
+    override fun getResultado(): Int {
+        return jdbi.withHandleUnchecked {
+            it.createQuery("SELECT result FROM sisins_inscricoes WHERE (id = 2)")
+                    .mapTo<Int>()
+                    .one()
+        }
+    }
     override fun countParticipante(): Int {
         return jdbi.withHandleUnchecked {
             it.createQuery("SELECT COUNT(id) FROM sisins_participante")
@@ -639,6 +649,16 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
 
         jdbi.withHandleUnchecked {
             it.createUpdate("INSERT INTO sisins_inscricoes (id, open) VALUES (1, 0)")
+                    .executeAndReturnGeneratedKeys()
+                    .mapTo<Int>()
+                    .one()
+        }
+    }
+
+    override fun insertResultado() {
+
+        jdbi.withHandleUnchecked {
+            it.createUpdate("INSERT INTO sisins_inscricoes (id, result) VALUES (2, 0)")
                     .executeAndReturnGeneratedKeys()
                     .mapTo<Int>()
                     .one()
@@ -1167,6 +1187,16 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
     override fun updateInterruptor(valor: Int) {
         jdbi.useHandleUnchecked {
             it.createUpdate("UPDATE sisins_inscricoes SET open = :v WHERE id = '1'")
+                    .bind("v", valor)
+                    .executeAndReturnGeneratedKeys()
+                    .mapTo<Int>()
+                    .one()
+        }
+    }
+
+    override fun updateResultadoAvaliacao(valor: Int) {
+        jdbi.useHandleUnchecked {
+            it.createUpdate("UPDATE sisins_inscricoes SET result = :v WHERE id = '2'")
                     .bind("v", valor)
                     .executeAndReturnGeneratedKeys()
                     .mapTo<Int>()

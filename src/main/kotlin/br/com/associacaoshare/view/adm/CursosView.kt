@@ -5,7 +5,7 @@ import br.com.associacaoshare.view.base.SisInsAdmView
 import io.javalin.http.Context
 import kotlinx.html.*
 
-class CursosView(private val errormsg: String?, private val cursos: List<Curso>, private var interruptor: Int) : SisInsAdmView() {
+class CursosView(private val errormsg: String?, private val cursos: List<Curso>, private var interruptor: Int, private var resultados: Int) : SisInsAdmView() {
     override val pageTitle: String = "Cursos"
 
     override fun MAIN.renderMain(ctx: Context) {
@@ -30,6 +30,21 @@ class CursosView(private val errormsg: String?, private val cursos: List<Curso>,
             div("botaofechar") {
                 a("/inscricoes/adm/fechainscricoes", classes = "entrar waves-effect waves-light btn") {
                     +"Fechar inscrições"
+                }
+            }
+        }
+
+        if(resultados == 0) {
+            div("botaoabrir") {
+                a("/inscricoes/adm/exibirresultados", classes = "entrar waves-effect waves-light btn") {
+                    +"Exibir resultados"
+                }
+            }
+        }
+        else if(resultados == 1) {
+            div("botaofechar") {
+                a("/inscricoes/adm/ocultarresultados", classes = "entrar waves-effect waves-light btn") {
+                    +"Ocultar resultados"
                 }
             }
         }

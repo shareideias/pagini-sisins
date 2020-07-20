@@ -6,7 +6,7 @@ import br.com.associacaoshare.view.base.SisInsAlunoView
 import io.javalin.http.Context
 import kotlinx.html.*
 
-class InscricoesAlunoView(private val errormsg: String?, private val participante: Participante, private val curso1: Curso?, private val curso2: Curso?, private var interruptor: Int) : SisInsAlunoView() {
+class InscricoesAlunoView(private val errormsg: String?, private val participante: Participante, private val curso1: Curso?, private val curso2: Curso?, private var interruptor: Int, private var resultado: Int) : SisInsAlunoView() {
     override val pageTitle: String
         get() = "Inscrição Share"
 
@@ -62,107 +62,216 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                 a("/inscricoes/alunos/editar", classes = "center atualizar waves-effect waves-light btn") {
                     +"Atualizar perfil"
                 }
-                h5 { +"Seus cursos:" }
 
-                if (interruptor == 0)
+                if (resultado == 0) {
+                    h5 { +"Seus cursos:" }
+
+
+                    if (interruptor == 0)
+                        h6 { +"As inscrições estão fechadas no momento." }
+
+                    ul("collection with-header") {
+
+                        if (participante.curso1_id == curso1?.id && participante.curso1_id != null) {
+                            li("collection-item bigitem") {
+                                span("title") {
+                                    b {
+                                        if (curso1 != null) {
+                                            +"${curso1.nome}"
+                                        }
+                                    }
+                                }
+
+                                form("/inscricoes/alunos/DeleteCurso1", classes = "col s12 addform secondary-content", method = FormMethod.post) {
+                                    input(InputType.number, classes = "validate invisible") {
+                                        id = "inputId"
+                                        name = "id"
+                                        if (curso1 != null) {
+                                            value = curso1.id.toString()
+                                        }
+                                    }
+                                    if (interruptor == 1) {
+                                        button(type = ButtonType.submit, classes = "secondary-content") {
+                                            i("material-icons") { +"delete" }
+                                        }
+                                    }
+                                }
+
+                                br {}
+                                p("horario") {
+                                    if (curso1 != null) {
+                                        +"${curso1.horario}"
+                                    }
+                                }
+                            }
+
+                        } else {
+                            li("collection-item") {
+                                div {
+                                    i { +"Primeira opção" }
+                                    if (interruptor == 1) {
+                                        a("/inscricoes/alunos/curso1", classes = "secondary-content") {
+                                            i("material-icons") { +"add" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if (participante.curso2_id == curso2?.id && participante.curso2_id != null) {
+                            li("collection-item bigitem") {
+                                span("title") {
+                                    b {
+                                        if (curso2 != null) {
+                                            +"${curso2.nome}"
+                                        }
+                                    }
+                                }
+
+                                form("/inscricoes/alunos/DeleteCurso2", classes = "col s12 addform secondary-content", method = FormMethod.post) {
+                                    input(InputType.number, classes = "validate invisible") {
+                                        id = "inputId"
+                                        name = "id"
+                                        if (curso2 != null) {
+                                            value = curso2.id.toString()
+                                        }
+                                    }
+                                    if (interruptor == 1) {
+                                        button(type = ButtonType.submit, classes = "secondary-content") {
+                                            i("material-icons") { +"delete" }
+                                        }
+                                    }
+                                }
+
+                                br {}
+                                p("horario") {
+                                    if (curso2 != null) {
+                                        +"${curso2.horario}"
+                                    }
+                                }
+                            }
+                        } else {
+                            li("collection-item") {
+                                div {
+                                    i { +"Segunda opção" }
+                                    if (interruptor == 1) {
+                                        a("/inscricoes/alunos/curso2", classes = "secondary-content") {
+                                            i("material-icons") { +"add" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    h6 { +"Obs: A segunda opção é direcionado automaticamente" }
+                    h6 { +" para a lista de espera." }
+                } else {
+                    h5 { +"Resultado:" }
+
                     h6 { +"As inscrições estão fechadas no momento." }
 
-                ul("collection with-header") {
+                    ul("collection with-header") {
 
-                    if (participante.curso1_id == curso1?.id && participante.curso1_id != null) {
-                        li("collection-item bigitem") {
-                            span("title") {
-                                b {
+                        if (participante.curso1_id == curso1?.id && participante.curso1_id != null) {
+                            li("collection-item bigitem") {
+                                span("title") {
+                                    b {
+                                        if (curso1 != null) {
+                                            +"${curso1.nome}"
+                                        }
+                                    }
+                                }
+
+                                span("secondary-content") {
+                                    when (participante.resultado_c1) {
+                                        -1 -> b("grey-text text-darken-2") {
+                                            +"Não avaliado"
+                                        }
+
+                                        1 -> b("light-green-text text-accent-3") {
+                                            +"Aprovado"
+                                        }
+                                        2 -> b("yellow-text text-accent-3") {
+                                            +"Lista de Espera"
+                                        }
+
+                                        3 -> b("blue-text text-accent-3") {
+                                            +"Desistência"
+                                        }
+
+                                        4 -> b("red-text text-accent-4") {
+                                            +"Reprovado"
+                                        }
+                                    }
+                                }
+                                br {}
+                                p("horario") {
                                     if (curso1 != null) {
-                                        +"${curso1.nome}"
+                                        +"${curso1.horario}"
                                     }
                                 }
                             }
-
-                            form("/inscricoes/alunos/DeleteCurso1", classes = "col s12 addform secondary-content", method = FormMethod.post) {
-                                input(InputType.number, classes = "validate invisible") {
-                                    id = "inputId"
-                                    name = "id"
-                                    if (curso1 != null) {
-                                        value = curso1.id.toString()
-                                    }
-                                }
-                                if (interruptor == 1) {
-                                    button(type = ButtonType.submit, classes = "secondary-content") {
-                                        i("material-icons") { +"delete" }
-                                    }
-                                }
-                            }
-
-                            br {}
-                            p("horario") {
-                                if (curso1 != null) {
-                                    +"${curso1.horario}"
+                        } else {
+                            li("collection-item") {
+                                div {
+                                    i { +"Não inscrito em 1ºopção" }
                                 }
                             }
                         }
 
-                    } else {
-                        li("collection-item") {
-                            div {
-                                i { +"Curso não selecionado" }
-                                if (interruptor == 1) {
-                                    a("/inscricoes/alunos/curso1", classes = "secondary-content") {
-                                        i("material-icons") { +"add" }
+                        if (participante.curso2_id == curso2?.id && participante.curso2_id != null) {
+                            li("collection-item bigitem") {
+                                span("title") {
+                                    b {
+                                        if (curso2 != null) {
+                                            +"${curso2.nome}"
+                                        }
+                                    }
+                                }
+
+                                span("secondary-content") {
+                                    when (participante.resultado_c2) {
+                                        -1 -> b("grey-text text-darken-2") {
+                                            +"Não avaliado"
+                                        }
+
+                                        1 -> b("light-green-text text-accent-3") {
+                                            +"Aprovado"
+                                        }
+                                        2 -> b("yellow-text text-accent-3") {
+                                            +"Lista de Espera"
+                                        }
+
+                                        3 -> b("blue-text text-accent-3") {
+                                            +"Desistência"
+                                        }
+
+                                        4 -> b("red-text text-accent-4") {
+                                            +"Reprovado"
+                                        }
+                                    }
+                                }
+                                br {}
+                                p("horario") {
+                                    if (curso2 != null) {
+                                        +"${curso2.horario}"
                                     }
                                 }
                             }
+                        } else {
+                            li("collection-item") {
+                                div {
+                                    i { +"Não inscrito em 2ºopção" }
+                                }
+                            }
                         }
+
+
                     }
 
-                    if (participante.curso2_id == curso2?.id && participante.curso2_id != null) {
-                        li("collection-item bigitem") {
-                            span("title") {
-                                b {
-                                    if (curso2 != null) {
-                                        +"${curso2.nome}"
-                                    }
-                                }
-                            }
-
-                            form("/inscricoes/alunos/DeleteCurso2", classes = "col s12 addform secondary-content", method = FormMethod.post) {
-                                input(InputType.number, classes = "validate invisible") {
-                                    id = "inputId"
-                                    name = "id"
-                                    if (curso2 != null) {
-                                        value = curso2.id.toString()
-                                    }
-                                }
-                                if (interruptor == 1) {
-                                    button(type = ButtonType.submit, classes = "secondary-content") {
-                                        i("material-icons") { +"delete" }
-                                    }
-                                }
-                            }
-
-                            br {}
-                            p("horario") {
-                                if (curso2 != null) {
-                                    +"${curso2.horario}"
-                                }
-                            }
-                        }
-                    } else {
-                        li("collection-item") {
-                            div {
-                                i { +"Curso não selecionado" }
-                                if (interruptor == 1) {
-                                    a("/inscricoes/alunos/curso2", classes = "secondary-content") {
-                                        i("material-icons") { +"add" }
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
-                h6 { +"Obs: A segunda opção do curso é direcionado automaticamente" }
-                h6 { +" para a lista de espera." }
             }
         }
     }
 }
+
