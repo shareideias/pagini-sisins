@@ -4,6 +4,7 @@ import br.com.associacaoshare.view.adm.*
 import br.com.associacaoshare.controller.security.ShareAccessManager.Roles.*
 import br.com.associacaoshare.model.Curso
 import br.com.associacaoshare.model.dao.DataAccessObject
+import br.com.associacaoshare.view.adm.inscricoes.*
 import io.javalin.apibuilder.ApiBuilder.get
 import io.javalin.apibuilder.ApiBuilder.post
 import io.javalin.apibuilder.EndpointGroup
@@ -21,6 +22,11 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
     override fun addEndpoints() {
         get(::cursos, roles(AVALIADOR))
         get("inscricoes", ::inscricoes, roles(AVALIADOR))
+        get("naoAvaliados", ::naoAvaliados, roles(AVALIADOR))
+        get("aprovados", ::aprovados, roles(AVALIADOR))
+        get("espera", ::espera, roles(AVALIADOR))
+        get("reprovados", ::reprovados, roles(AVALIADOR))
+        get("desistencias", ::desistencias, roles(AVALIADOR))
 
         get("inscricoesgerais", ::inscricoesgerais, roles(AVALIADOR))
 
@@ -66,6 +72,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         CursosView(errormsg, dao.allCurso(), interruptor, resultados).render(ctx)
     }
 
+    // INICIO dos resultados das inscrições
     private fun inscricoes(ctx: Context) {
         val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
@@ -79,6 +86,77 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
         InscricoesView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
+
+    private fun naoAvaliados(ctx: Context) {
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
+        if (errormsg != null)
+            ctx.cookie("errorMsg", "", 0)
+        val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
+        if (curso == null) {
+            ctx.redirect("/inscricoes/adm")
+            return
+        }
+        val inscritos = dao.getParticipantesbyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        NaoAvaliadosView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
+    }
+
+    private fun aprovados(ctx: Context) {
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
+        if (errormsg != null)
+            ctx.cookie("errorMsg", "", 0)
+        val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
+        if (curso == null) {
+            ctx.redirect("/inscricoes/adm")
+            return
+        }
+        val inscritos = dao.getParticipantesbyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        AprovadosView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
+    }
+
+    private fun espera(ctx: Context) {
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
+        if (errormsg != null)
+            ctx.cookie("errorMsg", "", 0)
+        val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
+        if (curso == null) {
+            ctx.redirect("/inscricoes/adm")
+            return
+        }
+        val inscritos = dao.getParticipantesbyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        EsperaView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
+    }
+
+    private fun reprovados(ctx: Context) {
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
+        if (errormsg != null)
+            ctx.cookie("errorMsg", "", 0)
+        val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
+        if (curso == null) {
+            ctx.redirect("/inscricoes/adm")
+            return
+        }
+        val inscritos = dao.getParticipantesbyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        ReprovadosView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
+    }
+
+    private fun desistencias(ctx: Context) {
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
+        if (errormsg != null)
+            ctx.cookie("errorMsg", "", 0)
+        val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
+        if (curso == null) {
+            ctx.redirect("/inscricoes/adm")
+            return
+        }
+        val inscritos = dao.getParticipantesbyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        DesistenciasView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
+    }
+    // FIM dos resultados das inscrições
 
     private fun inscricoesgerais(ctx: Context) {
         val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
