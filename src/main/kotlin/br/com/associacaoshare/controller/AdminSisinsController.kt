@@ -4,7 +4,7 @@ import br.com.associacaoshare.view.adm.*
 import br.com.associacaoshare.controller.security.ShareAccessManager.Roles.*
 import br.com.associacaoshare.model.Curso
 import br.com.associacaoshare.model.dao.DataAccessObject
-import br.com.associacaoshare.view.adm.inscricoes.*
+import br.com.associacaoshare.view.adm.categoriasAvaliaçao.*
 import io.javalin.apibuilder.ApiBuilder.get
 import io.javalin.apibuilder.ApiBuilder.post
 import io.javalin.apibuilder.EndpointGroup
@@ -97,7 +97,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             return
         }
         val inscritos = dao.getParticipantesbyCurso(curso.id)
-        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCursoCategoriaAvaliada(curso.id, -1)
         NaoAvaliadosView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
 
@@ -111,7 +111,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             return
         }
         val inscritos = dao.getParticipantesbyCurso(curso.id)
-        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCursoCategoriaAvaliada(curso.id, 1)
         AprovadosView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
 
@@ -125,7 +125,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             return
         }
         val inscritos = dao.getParticipantesbyCurso(curso.id)
-        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCursoCategoriaAvaliada(curso.id, 2)
         EsperaView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
 
@@ -139,7 +139,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             return
         }
         val inscritos = dao.getParticipantesbyCurso(curso.id)
-        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCursoCategoriaAvaliada(curso.id, 4)
         ReprovadosView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
 
@@ -153,7 +153,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             return
         }
         val inscritos = dao.getParticipantesbyCurso(curso.id)
-        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCursoCategoriaAvaliada(curso.id, 3)
         DesistenciasView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
     // FIM dos resultados das inscrições
@@ -383,7 +383,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             if(participante.curso2_id == curso.id)
                 participante.id.let { dao.updateResultado2(it, 1) }
 
-            ctx.redirect("inscricoes?id=${curso.id}")
+            ctx.redirect("aprovados?id=${curso.id}")
         }
     }
 
@@ -402,7 +402,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             if(participante.curso2_id == curso.id)
                 participante.id.let { dao.updateResultado2(it, 2) }
 
-            ctx.redirect("inscricoes?id=${curso.id}")
+            ctx.redirect("espera?id=${curso.id}")
         }
     }
 
@@ -421,7 +421,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             if(participante.curso2_id == curso.id)
                 participante.id.let { dao.updateResultado2(it, 3) }
 
-            ctx.redirect("inscricoes?id=${curso.id}")
+            ctx.redirect("desistencias?id=${curso.id}")
         }
     }
 
@@ -440,7 +440,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             if(participante.curso2_id == curso.id)
                 participante.id.let { dao.updateResultado2(it, 4) }
 
-            ctx.redirect("inscricoes?id=${curso.id}")
+            ctx.redirect("reprovados?id=${curso.id}")
         }
     }
 

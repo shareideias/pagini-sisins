@@ -621,6 +621,16 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
         }
     }
 
+    override fun countParticipantebyCursoCategoriaAvaliada(curso: Int, categoria: Int): Int {
+        return jdbi.withHandleUnchecked {
+            it.createQuery("SELECT COUNT(id) FROM sisins_participante WHERE ((resultado_c1 = :c OR resultado_c2 = :c) AND (curso1_id = :id OR curso2_id = :id))")
+                    .bind("id", curso)
+                    .bind("c", categoria)
+                    .mapTo<Int>()
+                    .one()
+        }
+    }
+
     override fun allAvaliador(): List<Avaliador> {
         return jdbi.withHandleUnchecked {
             it.createQuery("SELECT * FROM sisins_avaliador")

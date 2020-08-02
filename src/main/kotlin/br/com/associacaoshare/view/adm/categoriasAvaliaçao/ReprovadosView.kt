@@ -1,4 +1,4 @@
-package br.com.associacaoshare.view.adm.inscricoes
+package br.com.associacaoshare.view.adm.categoriasAvaliaçao
 
 import br.com.associacaoshare.model.Curso
 import br.com.associacaoshare.model.Participante
@@ -6,7 +6,7 @@ import br.com.associacaoshare.view.base.SisInsAdmView
 import io.javalin.http.Context
 import kotlinx.html.*
 
-class EsperaView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
+class ReprovadosView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
     override val pageTitle: String = "Cursos"
 
     override fun MAIN.renderMain(ctx: Context) {
@@ -40,17 +40,18 @@ class EsperaView(private val errormsg: String?, private val curso: Curso, privat
             div("col 14 m6 s12") {
                 inscritos?.forEach {
                     when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-                        2 -> {
+
+                        4 -> {
                             ul("collection") {
                                 li("collection-item avatar") {
-                                    i("material-icons circle yellow") {
+                                    i("material-icons circle red") {
                                         +"account_circle"
                                     }
                                     span("title") {
                                         +it.nome
                                     }
                                     p("statusavaliacao") {
-                                        +"Lista de espera"
+                                        +"Reprovado"
                                     }
                                     a("/inscricoes/adm/candidato?id=${it.id}&&idC=${curso.id}", classes = "secondary-content") {
                                         i("material-icons") {
@@ -66,3 +67,4 @@ class EsperaView(private val errormsg: String?, private val curso: Curso, privat
         }
     }
 }
+
