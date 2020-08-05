@@ -4,7 +4,7 @@ import br.com.associacaoshare.view.adm.*
 import br.com.associacaoshare.controller.security.ShareAccessManager.Roles.*
 import br.com.associacaoshare.model.Curso
 import br.com.associacaoshare.model.dao.DataAccessObject
-import br.com.associacaoshare.view.adm.categoriasAvaliaçao.*
+import br.com.associacaoshare.view.adm.inscricoes.*
 import io.javalin.apibuilder.ApiBuilder.get
 import io.javalin.apibuilder.ApiBuilder.post
 import io.javalin.apibuilder.EndpointGroup
@@ -97,7 +97,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             return
         }
         val inscritos = dao.getParticipantesbyCurso(curso.id)
-        var qtdParticipantes = dao.countParticipantebyCursoCategoriaAvaliada(curso.id, -1)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
         NaoAvaliadosView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
 
@@ -111,7 +111,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             return
         }
         val inscritos = dao.getParticipantesbyCurso(curso.id)
-        var qtdParticipantes = dao.countParticipantebyCursoCategoriaAvaliada(curso.id, 1)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
         AprovadosView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
 
@@ -125,7 +125,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             return
         }
         val inscritos = dao.getParticipantesbyCurso(curso.id)
-        var qtdParticipantes = dao.countParticipantebyCursoCategoriaAvaliada(curso.id, 2)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
         EsperaView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
 
@@ -139,7 +139,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             return
         }
         val inscritos = dao.getParticipantesbyCurso(curso.id)
-        var qtdParticipantes = dao.countParticipantebyCursoCategoriaAvaliada(curso.id, 4)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
         ReprovadosView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
 
@@ -153,7 +153,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             return
         }
         val inscritos = dao.getParticipantesbyCurso(curso.id)
-        var qtdParticipantes = dao.countParticipantebyCursoCategoriaAvaliada(curso.id, 3)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
         DesistenciasView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
     // FIM dos resultados das inscrições

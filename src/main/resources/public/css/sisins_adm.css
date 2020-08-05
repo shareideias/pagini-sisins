@@ -28,7 +28,14 @@ p {
     padding-left: 2em;
 }
 
-.statusavaliacao{
+.pageList {
+    background-color: #EC9091;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.statusavaliacao {
     padding-left: 0;
 }
 
@@ -42,7 +49,7 @@ article {
     margin: 0;
 }
 
-.borda-curso{
+.borda-curso {
     border: none;
 }
 
@@ -51,7 +58,7 @@ article {
     margin-top: 10px;
 }
 
-.botaoabrir{
+.botaoabrir {
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -59,7 +66,7 @@ article {
     margin-bottom: 17px;
 }
 
-.botaofechar{
+.botaofechar {
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -67,11 +74,11 @@ article {
     margin-bottom: 17px;
 }
 
-.formexclusao{
+.formexclusao {
     width: 100%;
 }
 
-.botoesexclusao{
+.botoesexclusao {
     width: 200px;
     display: block;
     margin-right: auto;
@@ -139,30 +146,31 @@ h3, h4, h5 {
     text-align: center;
 }
 
-.par_news{
+.par_news {
     padding-left: 0;
 }
 
-.rowzeras{
+.rowzeras {
     width: 80ch;
 }
 
-.invisible{
+.invisible {
     display: none;
 }
 
-.coursecard{
+.coursecard {
     height: 425px;
 }
 
-@media screen and (max-width: 776px){
-    .rowzeras{
+@media screen and (max-width: 776px) {
+    .rowzeras {
         width: 40ch;
     }
 }
 
-@media screen and (max-width: 393px){
-    .rowzeras{
+@media screen and (max-width: 393px) {
+    .rowzeras {
         width: 30ch;
     }
 }
+
