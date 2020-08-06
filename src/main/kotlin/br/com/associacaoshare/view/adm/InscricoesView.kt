@@ -22,9 +22,9 @@ class InscricoesView(private val errormsg: String?, private val curso: Curso, pr
         h4 { +curso.nome }
         h5 { +"${curso.horario}" }
 
-        nav {
-            div("pageList") {
-                div {
+        nav("abas-container") {
+            div("abas-content") {
+                div("col s12") {
                     a("/inscricoes/adm/inscricoes?id=${curso.id}", classes = "breadcrumb") { span("orange btn-small") { +"Todos" } }
                     a("/inscricoes/adm/naoAvaliados?id=${curso.id}", classes = "breadcrumb") { span("gray btn-small") { +"Não avaliados" } }
                     a("/inscricoes/adm/aprovados?id=${curso.id}", classes = "breadcrumb") { span("green btn-small") { +"Aprovados" } }

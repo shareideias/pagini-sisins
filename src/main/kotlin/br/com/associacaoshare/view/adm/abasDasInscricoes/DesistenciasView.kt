@@ -1,4 +1,4 @@
-package br.com.associacaoshare.view.adm.inscricoes
+package br.com.associacaoshare.view.adm.abasDasInscricoes
 
 import br.com.associacaoshare.model.Curso
 import br.com.associacaoshare.model.Participante
@@ -6,7 +6,7 @@ import br.com.associacaoshare.view.base.SisInsAdmView
 import io.javalin.http.Context
 import kotlinx.html.*
 
-class ReprovadosView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
+class DesistenciasView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
     override val pageTitle: String = "Cursos"
 
     override fun MAIN.renderMain(ctx: Context) {
@@ -17,20 +17,20 @@ class ReprovadosView(private val errormsg: String?, private val curso: Curso, pr
                 +"$errormsg"
             }
         }
-        var qtdReprovados = 0
+
+        var qtdDesistentes = 0
         inscritos?.forEach {
             when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-                4 -> {qtdReprovados++}
+                3 -> {qtdDesistentes++}
             }
         }
 
-
-        h3 { +"Reprovados (${qtdReprovados})" }
+        h3 { +"Desistiram (${qtdDesistentes})" }
         h4 { +curso.nome }
         h5 { +"${curso.horario}" }
 
-        nav {
-            div("pageList") {
+        nav("abas-container") {
+            div("abas-content") {
                 div("col s12") {
                     a("/inscricoes/adm/inscricoes?id=${curso.id}", classes = "breadcrumb") { span("orange btn-small") { +"Todos" } }
                     a("/inscricoes/adm/naoAvaliados?id=${curso.id}", classes = "breadcrumb") { span("gray btn-small") { +"Não avaliados" } }
@@ -47,18 +47,17 @@ class ReprovadosView(private val errormsg: String?, private val curso: Curso, pr
             div("col 14 m6 s12") {
                 inscritos?.forEach {
                     when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-
-                        4 -> {
+                        3 -> {
                             ul("collection") {
                                 li("collection-item avatar") {
-                                    i("material-icons circle red") {
+                                    i("material-icons circle blue") {
                                         +"account_circle"
                                     }
                                     span("title") {
                                         +it.nome
                                     }
                                     p("statusavaliacao") {
-                                        +"Reprovado"
+                                        +"Desistiu"
                                     }
                                     a("/inscricoes/adm/candidato?id=${it.id}&&idC=${curso.id}", classes = "secondary-content") {
                                         i("material-icons") {

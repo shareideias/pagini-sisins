@@ -1,4 +1,4 @@
-package br.com.associacaoshare.view.adm.inscricoes
+package br.com.associacaoshare.view.adm.abasDasInscricoes
 
 import br.com.associacaoshare.model.Curso
 import br.com.associacaoshare.model.Participante
@@ -6,7 +6,7 @@ import br.com.associacaoshare.view.base.SisInsAdmView
 import io.javalin.http.Context
 import kotlinx.html.*
 
-class AprovadosView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
+class EsperaView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
     override val pageTitle: String = "Cursos"
 
     override fun MAIN.renderMain(ctx: Context) {
@@ -17,21 +17,21 @@ class AprovadosView(private val errormsg: String?, private val curso: Curso, pri
                 +"$errormsg"
             }
         }
-
-        var qtdAprovados = 0
+        
+        var qtdEspera = 0
         inscritos?.forEach {
             when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-                1 -> {qtdAprovados++}
+                2 -> {qtdEspera++}
             }
         }
 
-        h3 { +"Aprovados (${qtdAprovados})" }
+        h3 { +"Lista de Espera (${qtdEspera})" }
         h4 { +curso.nome }
         h5 { +"${curso.horario}" }
 
-        nav {
-            div("pageList") {
-                div {
+        nav("abas-container") {
+            div("abas-content") {
+                div("col s12") {
                     a("/inscricoes/adm/inscricoes?id=${curso.id}", classes = "breadcrumb") { span("orange btn-small") { +"Todos" } }
                     a("/inscricoes/adm/naoAvaliados?id=${curso.id}", classes = "breadcrumb") { span("gray btn-small") { +"Não avaliados" } }
                     a("/inscricoes/adm/aprovados?id=${curso.id}", classes = "breadcrumb") { span("green btn-small") { +"Aprovados" } }
@@ -47,17 +47,17 @@ class AprovadosView(private val errormsg: String?, private val curso: Curso, pri
             div("col 14 m6 s12") {
                 inscritos?.forEach {
                     when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-                        1 -> {
+                        2 -> {
                             ul("collection") {
                                 li("collection-item avatar") {
-                                    i("material-icons circle green") {
+                                    i("material-icons circle yellow") {
                                         +"account_circle"
                                     }
                                     span("title") {
                                         +it.nome
                                     }
                                     p("statusavaliacao") {
-                                        +"Aprovado"
+                                        +"Lista de espera"
                                     }
                                     a("/inscricoes/adm/candidato?id=${it.id}&&idC=${curso.id}", classes = "secondary-content") {
                                         i("material-icons") {

@@ -4,7 +4,7 @@ import br.com.associacaoshare.view.adm.*
 import br.com.associacaoshare.controller.security.ShareAccessManager.Roles.*
 import br.com.associacaoshare.model.Curso
 import br.com.associacaoshare.model.dao.DataAccessObject
-import br.com.associacaoshare.view.adm.inscricoes.*
+import br.com.associacaoshare.view.adm.abasDasInscricoes.*
 import io.javalin.apibuilder.ApiBuilder.get
 import io.javalin.apibuilder.ApiBuilder.post
 import io.javalin.apibuilder.EndpointGroup

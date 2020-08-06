@@ -1,4 +1,4 @@
-package br.com.associacaoshare.view.adm.inscricoes
+package br.com.associacaoshare.view.adm.abasDasInscricoes
 
 import br.com.associacaoshare.model.Curso
 import br.com.associacaoshare.model.Participante
@@ -6,7 +6,7 @@ import br.com.associacaoshare.view.base.SisInsAdmView
 import io.javalin.http.Context
 import kotlinx.html.*
 
-class DesistenciasView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
+class NaoAvaliadosView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
     override val pageTitle: String = "Cursos"
 
     override fun MAIN.renderMain(ctx: Context) {
@@ -18,20 +18,20 @@ class DesistenciasView(private val errormsg: String?, private val curso: Curso, 
             }
         }
 
-        var qtdDesistentes = 0
+        var qtdNaoAvaliados = 0
         inscritos?.forEach {
             when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-                3 -> {qtdDesistentes++}
+                -1 -> {qtdNaoAvaliados++}
             }
         }
 
-        h3 { +"Desistiram (${qtdDesistentes})" }
+        h3 { +"Não Avaliados (${qtdNaoAvaliados})" }
         h4 { +curso.nome }
         h5 { +"${curso.horario}" }
 
-        nav {
-            div("pageList") {
-                div {
+        nav("abas-container") {
+            div("abas-content") {
+                div("col s12") {
                     a("/inscricoes/adm/inscricoes?id=${curso.id}", classes = "breadcrumb") { span("orange btn-small") { +"Todos" } }
                     a("/inscricoes/adm/naoAvaliados?id=${curso.id}", classes = "breadcrumb") { span("gray btn-small") { +"Não avaliados" } }
                     a("/inscricoes/adm/aprovados?id=${curso.id}", classes = "breadcrumb") { span("green btn-small") { +"Aprovados" } }
@@ -47,17 +47,17 @@ class DesistenciasView(private val errormsg: String?, private val curso: Curso, 
             div("col 14 m6 s12") {
                 inscritos?.forEach {
                     when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-                        3 -> {
+                        -1 -> {
                             ul("collection") {
                                 li("collection-item avatar") {
-                                    i("material-icons circle blue") {
+                                    i("material-icons circle gray") {
                                         +"account_circle"
                                     }
                                     span("title") {
                                         +it.nome
                                     }
                                     p("statusavaliacao") {
-                                        +"Desistiu"
+                                        +"Não Avaliado"
                                     }
                                     a("/inscricoes/adm/candidato?id=${it.id}&&idC=${curso.id}", classes = "secondary-content") {
                                         i("material-icons") {
@@ -73,4 +73,3 @@ class DesistenciasView(private val errormsg: String?, private val curso: Curso, 
         }
     }
 }
-

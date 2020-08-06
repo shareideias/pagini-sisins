@@ -1,4 +1,4 @@
-package br.com.associacaoshare.view.adm.inscricoes
+package br.com.associacaoshare.view.adm.abasDasInscricoes
 
 import br.com.associacaoshare.model.Curso
 import br.com.associacaoshare.model.Participante
@@ -6,7 +6,7 @@ import br.com.associacaoshare.view.base.SisInsAdmView
 import io.javalin.http.Context
 import kotlinx.html.*
 
-class NaoAvaliadosView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
+class ReprovadosView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
     override val pageTitle: String = "Cursos"
 
     override fun MAIN.renderMain(ctx: Context) {
@@ -17,21 +17,21 @@ class NaoAvaliadosView(private val errormsg: String?, private val curso: Curso, 
                 +"$errormsg"
             }
         }
-
-        var qtdNaoAvaliados = 0
+        var qtdReprovados = 0
         inscritos?.forEach {
             when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-                -1 -> {qtdNaoAvaliados++}
+                4 -> {qtdReprovados++}
             }
         }
 
-        h3 { +"Não Avaliados (${qtdNaoAvaliados})" }
+
+        h3 { +"Reprovados (${qtdReprovados})" }
         h4 { +curso.nome }
         h5 { +"${curso.horario}" }
 
-        nav {
-            div("pageList") {
-                div {
+        nav("abas-container") {
+            div("abas-content") {
+                div("col s12") {
                     a("/inscricoes/adm/inscricoes?id=${curso.id}", classes = "breadcrumb") { span("orange btn-small") { +"Todos" } }
                     a("/inscricoes/adm/naoAvaliados?id=${curso.id}", classes = "breadcrumb") { span("gray btn-small") { +"Não avaliados" } }
                     a("/inscricoes/adm/aprovados?id=${curso.id}", classes = "breadcrumb") { span("green btn-small") { +"Aprovados" } }
@@ -47,17 +47,18 @@ class NaoAvaliadosView(private val errormsg: String?, private val curso: Curso, 
             div("col 14 m6 s12") {
                 inscritos?.forEach {
                     when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-                        -1 -> {
+
+                        4 -> {
                             ul("collection") {
                                 li("collection-item avatar") {
-                                    i("material-icons circle gray") {
+                                    i("material-icons circle red") {
                                         +"account_circle"
                                     }
                                     span("title") {
                                         +it.nome
                                     }
                                     p("statusavaliacao") {
-                                        +"Não Avaliado"
+                                        +"Reprovado"
                                     }
                                     a("/inscricoes/adm/candidato?id=${it.id}&&idC=${curso.id}", classes = "secondary-content") {
                                         i("material-icons") {
@@ -73,3 +74,4 @@ class NaoAvaliadosView(private val errormsg: String?, private val curso: Curso, 
         }
     }
 }
+
