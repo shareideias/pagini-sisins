@@ -64,7 +64,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                 }
 
                 if (resultado == 0) {
-                    h5 { +"Seus cursos:" }
+                    h5 { +"Inscrições:" }
 
 
                     if (interruptor == 0)

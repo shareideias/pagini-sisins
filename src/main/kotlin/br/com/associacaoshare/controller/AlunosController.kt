@@ -76,6 +76,11 @@ class AlunosController (override val kodein: Kodein) : EndpointGroup, KodeinAwar
         if(participante != null) {
             participante.atualizaDados(resp)
             dao.updateParticipante(participante)
+            if(participante.curso1_id != null && dao.getInterruptor() == 1)
+                preselecao1(participante)
+            if(participante.curso2_id != null && dao.getInterruptor() == 1)
+                preselecao2(participante)
+
         }
         ctx.redirect("/inscricoes/alunos")
     }

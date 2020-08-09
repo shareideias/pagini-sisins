@@ -58,7 +58,8 @@ class Lista2View(private val errormsg: String?, private val participante: Partic
             }
             div("center col s12 m12 l3") {
 
-                h5 { +"Seus cursos:" }
+                h5 { +"Cursos disponíveis." }
+                h5 { +"Inscreva-se em sua segunda opção:" }
 
                 div(classes="board"){
                     ul("collection with-header") {

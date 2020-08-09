@@ -457,7 +457,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
                     button(type = ButtonType.submit, classes = "entrar waves-effect waves-light btn") {
                         id = "btnParte4Cadastrar"
-                        +"Cadastrar"
+                        +"Próximo"
                     }
                 }
             }
