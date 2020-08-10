@@ -175,11 +175,11 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         val candidato = ctx.queryParam("id")?.toInt()?.let{dao.getParticipante(it)}
 
         val curso = ctx.queryParam("idC")?.toInt()?.let{dao.getCurso(it)}
-        /*if (curso == null) {
-            ctx.redirect("/adm")
-            return
-        }*/
-        CandidatoView(errormsg, candidato, curso).render(ctx)
+        val curso1 = ctx.sessionAttribute<Int?>("ID")?.let { dao.getCurso(candidato!!.curso1_id) }
+        val curso2 = ctx.sessionAttribute<Int?>("ID")?.let { dao.getCurso(candidato!!.curso2_id) }
+        if (curso != null && candidato != null) {
+            CandidatoView(errormsg, candidato, curso, curso1, curso2).render(ctx)
+        }
     }
 
     private fun candidatoProc(ctx: Context){
@@ -197,11 +197,13 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         if (errormsg != null)
             ctx.cookie("errorMsg", "", 0)
         val participante = ctx.queryParam("id")?.toInt()?.let{dao.getParticipante(it)}
+        val curso1 = ctx.sessionAttribute<Int?>("ID")?.let { dao.getCurso(participante!!.curso1_id) }
+        val curso2 = ctx.sessionAttribute<Int?>("ID")?.let { dao.getCurso(participante!!.curso2_id) }
         if (participante == null) {
             ctx.redirect("/inscricoes/adm")
             return
         }
-        PerfilCandidatoView(errormsg, participante).render(ctx)
+        PerfilCandidatoView(errormsg, participante, curso1, curso2).render(ctx)
     }
 
 
