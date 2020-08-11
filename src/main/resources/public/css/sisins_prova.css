@@ -1,6 +1,11 @@
 body{
     background-color: #FAFAFA;
 }
+
+fieldset{
+    border: 0;
+}
+
 .row{
     width: 40ch;
 }
