@@ -294,7 +294,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"Você está ciente de que as aulas da Share acontecem na UFSCar Sorocaba, próximo à Salto de Pirapora?"
+                        +"Você está ciente de que as aulas dos cursos presenciais da Share acontecem na UFSCar Sorocaba, próximo à Salto de Pirapora?"
                         label("perguntas") {
                             htmlFor = "inputLocal_aulas"
                         }
