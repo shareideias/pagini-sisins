@@ -37,14 +37,14 @@ class CursosView(private val errormsg: String?, private val cursos: List<Curso>,
         if(resultados == 0) {
             div("botaoabrir") {
                 a("/inscricoes/adm/exibirresultados", classes = "entrar waves-effect waves-light btn") {
-                    +"Exibir resultados"
+                    +"Exibir resultado"
                 }
             }
         }
         else if(resultados == 1) {
             div("botaofechar") {
                 a("/inscricoes/adm/ocultarresultados", classes = "entrar waves-effect waves-light btn") {
-                    +"Ocultar resultados"
+                    +"Omitir resultado"
                 }
             }
         }
