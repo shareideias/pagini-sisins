@@ -14,15 +14,15 @@ data class Participante(
     var tipo_sem_vinculo: Int,
     var vinculo_ufscar: Int,
     var escola: String,
-    var esteve_ufscar: Int,
     var edital: Int,
     var onde_conheceu: Int,
+    var influencer: String,
+    var esteve_ufscar: Int,
     var local_aulas: Int,
     var disponibilidade: String,
     var objetivo: Int,
     var cursou_share: Int,
     var desistencia: Int,
-    var redacao_entrada: String,
 
     var curso1_id: Int?,
     var data_inscricao_c1: LocalDate?,
@@ -34,6 +34,7 @@ data class Participante(
     var resposta6_c1: Int?,
     var avaliador_id_c1: Int?,
     var resultado_c1: Int? = -1,
+    var redacao1: String,
 
     var curso2_id: Int?,
     var data_inscricao_c2: LocalDate?,
@@ -44,7 +45,8 @@ data class Participante(
     var resposta5_c2: Int?,
     var resposta6_c2: Int?,
     var avaliador_id_c2: Int?,
-    var resultado_c2: Int? = -1
+    var resultado_c2: Int? = -1,
+    var redacao2: String
 ) {
     fun hashPassword(password: String) {
         hash = DataAccessObject.hashPassword(password)
@@ -75,6 +77,8 @@ data class Participante(
         val onde_conheceu: String by respostas
         val ondeConheceuInt: Int = onde_conheceu.toInt()
         this.onde_conheceu = ondeConheceuInt
+        val influencer: String by respostas
+        this.influencer = influencer
         val esteve_ufscar: String by respostas
         val esteveUfscarInt: Int = esteve_ufscar.toInt()
         this.esteve_ufscar = esteveUfscarInt
@@ -92,8 +96,6 @@ data class Participante(
         val desistencia: String by respostas
         val desistenciaInt: Int = desistencia.toInt()
         this.desistencia = desistenciaInt
-        val redacao_entrada: String by respostas
-        this.redacao_entrada = redacao_entrada
 
         val password: String by respostas
         if(password.isNotEmpty())
@@ -121,6 +123,8 @@ data class Participante(
         this.resposta5_c1 = resposta5_c1.toInt()
         val resposta6_c1: String by respostas
         this.resposta6_c1 = resposta6_c1.toInt()
+        val redacao1: String by respostas
+        this.redacao1 = redacao1
     }
 
     fun atualizaProva2(respostasPack: Map<String, List<String>>){
@@ -137,5 +141,7 @@ data class Participante(
         this.resposta5_c2 = resposta5_c2.toInt()
         val resposta6_c2: String by respostas
         this.resposta6_c2 = resposta6_c2.toInt()
+        val redacao2: String by respostas
+        this.redacao2 = redacao2
     }
 }

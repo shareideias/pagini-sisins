@@ -501,19 +501,19 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                     }
                 }
 
-                div("input-field col s12 mb-0 perguntas") {
-                    +"Para finalizar, pedimos para que você escreva em algumas linhas por que gostaria de fazer um curso na Share. Lembre-se, esse é um dos critérios mais importantes para ser selecionado (exceto: curso português para estrangeiros)."
-                    label {
-                        htmlFor = "inputRedacao"
-
-                    }
-                    input(InputType.text, classes = "validate") {
-                        id = "inputRedacao"
-                        name = "redacao_entrada"
-                        value = participante.redacao_entrada
-                        required = true
-                    }
-                }
+//                div("input-field col s12 mb-0 perguntas") {
+//                    +"Para finalizar, pedimos para que você escreva em algumas linhas por que gostaria de fazer um curso na Share. Lembre-se, esse é um dos critérios mais importantes para ser selecionado (exceto: curso português para estrangeiros)."
+//                    label {
+//                        htmlFor = "inputRedacao"
+//
+//                    }
+//                    input(InputType.text, classes = "validate") {
+//                        id = "inputRedacao"
+//                        name = "redacao_entrada"
+//                        value = participante.redacao_entrada
+//                        required = true
+//                    }
+//                }
                 button(type = ButtonType.submit, classes = "entrar waves-effect waves-light btn") {
                     id = "btnParte4Cadastrar"
                     +"Editar"

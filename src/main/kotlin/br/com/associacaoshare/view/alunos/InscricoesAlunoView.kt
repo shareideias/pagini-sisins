@@ -6,7 +6,7 @@ import br.com.associacaoshare.view.base.SisInsAlunoView
 import io.javalin.http.Context
 import kotlinx.html.*
 
-class InscricoesAlunoView(private val errormsg: String?, private val participante: Participante, private val curso1: Curso?, private val curso2: Curso?, private var interruptor: Int, private var resultado: Int) : SisInsAlunoView() {
+class InscricoesAlunoView(private val errormsg: String?, private val participante: Participante?, private val curso1: Curso?, private val curso2: Curso?, private var interruptor: Int, private var resultado: Int) : SisInsAlunoView() {
     override val pageTitle: String
         get() = "Inscrição Share"
 
@@ -72,7 +72,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
 
                     ul("collection with-header") {
 
-                        if (participante.curso1_id == curso1?.id && participante.curso1_id != null) {
+                        if (participante?.curso1_id == curso1?.id && participante?.curso1_id != null) {
                             li("collection-item bigitem") {
                                 span("title") {
                                     b {
@@ -118,7 +118,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                             }
                         }
 
-                        if (participante.curso2_id == curso2?.id && participante.curso2_id != null) {
+                        if (participante?.curso2_id == curso2?.id && participante?.curso2_id != null) {
                             li("collection-item bigitem") {
                                 span("title") {
                                     b {
@@ -172,7 +172,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
 
                     ul("collection with-header") {
 
-                        if (participante.curso1_id == curso1?.id && participante.curso1_id != null) {
+                        if (participante?.curso1_id == curso1?.id && participante?.curso1_id != null) {
                             li("collection-item bigitem") {
                                 span("title") {
                                     b {
@@ -183,7 +183,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                                 }
 
                                 span("secondary-content") {
-                                    when (participante.resultado_c1) {
+                                    when (participante?.resultado_c1) {
                                         -1 -> b("grey-text text-darken-2") {
                                             +"Não avaliado"
                                         }
@@ -219,7 +219,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                             }
                         }
 
-                        if (participante.curso2_id == curso2?.id && participante.curso2_id != null) {
+                        if (participante?.curso2_id == curso2?.id && participante?.curso2_id != null) {
                             li("collection-item bigitem") {
                                 span("title") {
                                     b {
@@ -230,7 +230,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                                 }
 
                                 span("secondary-content") {
-                                    when (participante.resultado_c2) {
+                                    when (participante?.resultado_c2) {
                                         -1 -> b("grey-text text-darken-2") {
                                             +"Não avaliado"
                                         }

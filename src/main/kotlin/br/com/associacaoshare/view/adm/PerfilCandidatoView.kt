@@ -131,10 +131,10 @@ class PerfilCandidatoView(private val errormsg: String?, private val participant
                     br { +"Não" }
                 }
             }
-            p {
-                b { +"Texto de por quê gostaria de fazer um curso na Share:" }
-                br { +participante.redacao_entrada }
-            }
+//            p {
+//                b { +"Texto de por quê gostaria de fazer um curso na Share:" }
+//                br { +participante.redacao_entrada }
+//            }
             p {
                 b { +"Leitura do edital:" }
                 if (participante.esteve_ufscar == 1) {
