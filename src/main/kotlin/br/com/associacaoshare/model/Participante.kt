@@ -78,7 +78,8 @@ data class Participante(
         val ondeConheceuInt: Int = onde_conheceu.toInt()
         this.onde_conheceu = ondeConheceuInt
         val influencer: String by respostas
-        this.influencer = influencer
+        val influencerString = if(influencer.isNullOrEmpty()) "nenhum" else influencer
+        this.influencer = influencerString
         val esteve_ufscar: String by respostas
         val esteveUfscarInt: Int = esteve_ufscar.toInt()
         this.esteve_ufscar = esteveUfscarInt

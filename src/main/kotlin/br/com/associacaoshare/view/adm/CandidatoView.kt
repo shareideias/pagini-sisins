@@ -148,15 +148,17 @@ class CandidatoView(private val errormsg: String?, private val participante: Par
                 }
             }
             p {
-                b { +"Por onde conheceu a Share:" }
+                b { +"Como você ficou sabendo da Share?" }
                 if (participante.onde_conheceu == 1) {
-                    br { +"Mídias Sociais (Facebook, Whatsapp, etc)" }
+                    br { +"Instagram" }
                 } else if (participante.onde_conheceu == 2) {
-                    br { +"Recomendação" }
+                    br { +"Facebook" }
                 } else if (participante.onde_conheceu == 3) {
-                    br { +"Outras Mídias (Jornais, Revistas, Televisão)" }
+                    br { +"WhatsApp" }
                 } else if (participante.onde_conheceu == 4) {
-                    br { +"Outro" }
+                    br { +"amigos/familiares" }
+                } else if (participante.onde_conheceu == 5) {
+                    br { +"influencer: ${participante.influencer}" }
                 }
             }
         }

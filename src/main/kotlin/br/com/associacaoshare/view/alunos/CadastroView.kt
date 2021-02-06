@@ -236,35 +236,78 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"Por onde conheceu a share?"
-                        label("perguntas") {
-                            htmlFor = "inputOnde_conheceu"
+                        +"Como você ficou sabendo da Share?"
+                    }
+
+                    fieldSet {
+                        id = "selectOndeConheceu"
+                        div (classes="inputInfluencer") {
+                            label {
+                                input(InputType.radio, classes = "with-gap") {
+                                    id = "selectOndeConheceu1"
+                                    name = "onde_conheceu"
+                                    value = "1"
+                                    required = true
+                                }
+                                span { +"Instagram" }
+                            }
                         }
-                        select {
-                            id = "selectOndeConheceu"
-                            name = "onde_conheceu"
-                            required = true
-                            option {
-                                disabled = true
-                                selected = true
-                                value = ""
+                        div (classes="inputInfluencer") {
+                            label {
+                                input(InputType.radio, classes = "with-gap") {
+                                    id = "selectOndeConheceu2"
+                                    name = "onde_conheceu"
+                                    value = "2"
+                                    required = true
+                                }
+                                span { +"Facebook" }
                             }
-                            option {
-                                value = "1"
-                                +"Mídias Sociais (Facebook, Whatsapp, etc)"
+                        }
+                        div (classes="inputInfluencer") {
+                            label {
+                                input(InputType.radio, classes = "with-gap") {
+                                    id = "selectOndeConheceu3"
+                                    name = "onde_conheceu"
+                                    value = "3"
+                                    required = true
+                                }
+                                span { +"WhatsApp" }
                             }
-                            option {
-                                value = "2"
-                                +"Recomendação"
+                        }
+                        div (classes="inputInfluencerPenultimo"){
+                            label {
+                                input(InputType.radio, classes = "with-gap") {
+                                    id = "selectOndeConheceu4"
+                                    name = "onde_conheceu"
+                                    value = "4"
+                                    required = true
+                                }
+                                span { +"Amigos/Familiares" }
                             }
-                            option {
-                                value = "3"
-                                +"Outras Mídias (Jornais, Revistas, Televisão)"
+                        }
+                        div (classes="inputInfluencer") {
+                            label {
+                                input(InputType.radio, classes = "with-gap") {
+                                    id = "selectOndeConheceu5"
+                                    name = "onde_conheceu"
+                                    value = "5"
+                                    required = true
+                                }
+                                span { +"influenciador:" }
                             }
-                            option {
-                                value = "4"
-                                +"Outro"
+
+                            div(classes = "input-field inline") {
+                                input(InputType.text, classes = "validate") {
+                                    id = "influencer"
+                                    name = "influencer"
+                                    required = false
+                                }
+                                label{
+                                    htmlFor="influencer"
+                                    +"Quem?"
+                                }
                             }
+
                         }
                     }
 
@@ -443,18 +486,6 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                         }
                     }
 
-                    div("input-field col s12 mb-0 perguntas") {
-                        +"Para finalizar, pedimos para que você escreva em algumas linhas por que gostaria de fazer um curso na Share. Lembre-se, esse é um dos critérios mais importantes para ser selecionado (exceto: curso português para estrangeiros)."
-                        label {
-                            htmlFor = "inputRedacao_entrada"
-
-                        }
-                        textArea(classes = "validate materialize-textarea") {
-                            id = "inputRedacao_entrada"
-                            name = "redacao_entrada"
-                            required = true
-                        }
-                    }
                     button(type = ButtonType.submit, classes = "entrar waves-effect waves-light btn") {
                         id = "btnParte4Cadastrar"
                         +"Próximo"

@@ -259,41 +259,88 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0") {
-                    +"Por onde conheceu a share?"
-                    label("perguntas") {
-                        htmlFor = "inputOnde_conheceu"
+                    +"Como você ficou sabendo da Share?"
+                }
+
+                fieldSet {
+                    id = "selectOndeConheceu"
+                    p {
+                        label {
+                            input(InputType.radio, classes = "with-gap") {
+                                id = "selectOndeConheceu"
+                                name = "onde_conheceu"
+                                value = "1"
+                                required = true
+                                if(participante.onde_conheceu == 1){
+                                    checked = true
+                                }
+                            }
+                            span { +"Instagram" }
+                        }
                     }
-                    select {
-                        id = "selectOndeConheceu"
-                        name = "onde_conheceu"
-                        required = true
-                        option {
-                            value = "1"
-                            if(participante.onde_conheceu == 1) {
-                                selected = true
+                    p {
+                        label {
+                            input(InputType.radio, classes = "with-gap") {
+                                id = "selectOndeConheceu"
+                                name = "onde_conheceu"
+                                value = "2"
+                                required = true
+                                if(participante.onde_conheceu == 2){
+                                    checked = true
+                                }
                             }
-                            +"Mídias Sociais (Facebook, Whatsapp, etc)"
+                            span { +"Facebook" }
                         }
-                        option {
-                            value = "2"
-                            if(participante.onde_conheceu == 2) {
-                                selected = true
+                    }
+                    p {
+                        label {
+                            input(InputType.radio, classes = "with-gap") {
+                                id = "selectOndeConheceu"
+                                name = "onde_conheceu"
+                                value = "3"
+                                required = true
+                                if(participante.onde_conheceu == 3){
+                                    checked = true
+                                }
                             }
-                            +"Recomendação"
+                            span { +"WhatsApp" }
                         }
-                        option {
-                            value = "3"
-                            if(participante.onde_conheceu == 3) {
-                                selected = true
+                    }
+                    p {
+                        label {
+                            input(InputType.radio, classes = "with-gap") {
+                                id = "selectOndeConheceu"
+                                name = "onde_conheceu"
+                                value = "4"
+                                required = true
+                                if(participante.onde_conheceu == 4){
+                                    checked = true
+                                }
                             }
-                            +"Outras Mídias (Jornais, Revistas, Televisão)"
+                            span { +"amigos/familiares" }
                         }
-                        option {
-                            value = "4"
-                            if(participante.onde_conheceu == 4) {
-                                selected = true
+                    }
+                    p {
+                        label {
+                            input(InputType.radio, classes = "with-gap") {
+                                id = "selectOndeConheceu"
+                                name = "onde_conheceu"
+                                value = "5"
+                                required = true
+                                if(participante.onde_conheceu == 5){
+                                    checked = true
+                                }
                             }
-                            +"Outro"
+//
+                            span { +"influenciador, quem?" }
+                            input(InputType.text, classes = "validate") {
+                                id = "influencer"
+                                name = "influencer"
+                                required = false
+                                if(participante.influencer != "nenhum") {
+                                    value = participante.influencer
+                                }
+                            }
                         }
                     }
                 }
@@ -501,19 +548,6 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                     }
                 }
 
-//                div("input-field col s12 mb-0 perguntas") {
-//                    +"Para finalizar, pedimos para que você escreva em algumas linhas por que gostaria de fazer um curso na Share. Lembre-se, esse é um dos critérios mais importantes para ser selecionado (exceto: curso português para estrangeiros)."
-//                    label {
-//                        htmlFor = "inputRedacao"
-//
-//                    }
-//                    input(InputType.text, classes = "validate") {
-//                        id = "inputRedacao"
-//                        name = "redacao_entrada"
-//                        value = participante.redacao_entrada
-//                        required = true
-//                    }
-//                }
                 button(type = ButtonType.submit, classes = "entrar waves-effect waves-light btn") {
                     id = "btnParte4Cadastrar"
                     +"Editar"
