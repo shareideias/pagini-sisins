@@ -169,7 +169,7 @@ class PerfilCandidatoView(private val errormsg: String?, private val participant
                     }
                     b {
                         if (curso1 != null) {
-                            +"${curso1.nome}"
+                            +curso1.nome
                         }
                     }
 
@@ -195,6 +195,10 @@ class PerfilCandidatoView(private val errormsg: String?, private val participant
                             +"Reprovado"
                         }
                     }
+                }
+                p {
+                    b { +"redação: ${curso1?.nome}" }
+                    br { +participante.redacao1 }
                 }
             } else {
                 p {
@@ -238,12 +242,17 @@ class PerfilCandidatoView(private val errormsg: String?, private val participant
                         }
                     }
                 }
+                p {
+                    b { +"redação: ${curso2?.nome}" }
+                    br { +participante.redacao2 }
+                }
             } else {
                 p {
                     b { +"2ºopção não escolhida" }
                 }
             }
         }
+
         link(type = "text/css", rel = "stylesheet", href = "/css/sisins_edicao.css")
         div("row") {
             form("EdicaoSenha", classes = "col s12", method = FormMethod.post) {

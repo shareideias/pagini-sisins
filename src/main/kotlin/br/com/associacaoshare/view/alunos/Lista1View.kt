@@ -67,31 +67,23 @@ class Lista1View(private val errormsg: String?, private val participante: Partic
                             if(participante.curso2_id != it.id){
                                 li("collection-item") {
                                     span("title") {
-                                        b { +"${it.nome}" }
+                                        b { +it.nome }
                                     }
 
-                                    form("CadastraCurso1", classes = "col s12 addform", method = FormMethod.post) {
-                                        input(InputType.number, classes = "validate invisible") {
-                                            id = "inputId"
-                                            name = "id"
-                                            value = it.id.toString()
-                                        }
+//                                    form("/inscricoes/alunos/redacao_entrada1?id=${it.id}", classes = "col s12 addform", method = FormMethod.get) {
 
-                                        input(InputType.number, classes = "validate invisible") {
-                                            id = "inputCategoria"
-                                            name = "categoria"
-                                            value = it.categoria
-                                        }
                                         if (interruptor == 1){
-                                            button(type = ButtonType.submit, classes = "secondary-content") {
-                                                i("material-icons") { +"add" }
+                                            a("/inscricoes/alunos/redacao_entrada1?id=${it.id}", classes = "secondary-content") {
+                                                button(type = ButtonType.button, classes = "secondary-content") {
+                                                    i("material-icons") { +"add" }
+                                                }
                                             }
                                         }
-                                    }
+//                                    }
 
 
                                     br {}
-                                    p("horario") { +"${it.horario}" }
+                                    p("horario") { +it.horario }
                                 }
                             }
                         }

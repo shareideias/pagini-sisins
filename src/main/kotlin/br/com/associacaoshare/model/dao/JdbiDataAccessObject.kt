@@ -1002,10 +1002,11 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
         }
     }
 
-    override fun updateCurso1inParticipante(participante: Participante, id: Int?) {
+    override fun updateCurso1inParticipante(participante: Participante, id: Int?, redacao1: String) {
         jdbi.useHandleUnchecked {
-            it.createUpdate("UPDATE sisins_participante SET curso1_id = :c1 WHERE id = :idPart")
+            it.createUpdate("UPDATE sisins_participante SET curso1_id = :c1, redacao1 = :redacao1 WHERE id = :idPart")
                     .bind("c1", id)
+                    .bind("redacao1", redacao1)
                     .bind("idPart", participante.id)
                     .executeAndReturnGeneratedKeys()
                     .mapTo<Int>()
@@ -1013,10 +1014,11 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
         }
     }
 
-    override fun updateCurso2inParticipante(participante: Participante, id: Int?) {
+    override fun updateCurso2inParticipante(participante: Participante, id: Int?, redacao2: String) {
         jdbi.useHandleUnchecked {
-            it.createUpdate("UPDATE sisins_participante SET curso2_id = :c2 WHERE id = :idPart")
+            it.createUpdate("UPDATE sisins_participante SET curso2_id = :c2, redacao2 = :redacao2 WHERE id = :idPart")
                     .bind("c2", id)
+                    .bind("redacao2", redacao2)
                     .bind("idPart", participante.id)
                     .executeAndReturnGeneratedKeys()
                     .mapTo<Int>()

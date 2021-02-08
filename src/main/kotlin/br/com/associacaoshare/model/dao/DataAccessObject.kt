@@ -78,8 +78,8 @@ interface DataAccessObject {
 
     fun updateAvaliacaoParticipante(participante: Participante, c1Id: Int?, c2Id: Int?)
 
-    fun updateCurso1inParticipante(participante: Participante, id: Int?)
-    fun updateCurso2inParticipante(participante: Participante, id: Int?)
+    fun updateCurso1inParticipante(participante: Participante, id: Int?, redacao1: String)
+    fun updateCurso2inParticipante(participante: Participante, id: Int?, redacao2: String)
 
     fun updateProva1inParticipante(participante: Participante)
     fun updateProva2inParticipante(participante: Participante)

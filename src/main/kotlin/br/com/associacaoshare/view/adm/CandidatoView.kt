@@ -328,6 +328,10 @@ class CandidatoView(private val errormsg: String?, private val participante: Par
                         }
                     }
                 }
+                p {
+                    b { +"redação: ${curso1?.nome}" }
+                    br { +participante.redacao1 }
+                }
             } else {
                 p {
                     b { +"1ºopção não escolhida" }
@@ -368,6 +372,10 @@ class CandidatoView(private val errormsg: String?, private val participante: Par
                         4 -> b("red-text text-accent-4") {
                             +"Reprovado"
                         }
+                    }
+                    p {
+                        b { +"redação: ${curso2?.nome}" }
+                        br { +participante.redacao2 }
                     }
                 }
             } else {

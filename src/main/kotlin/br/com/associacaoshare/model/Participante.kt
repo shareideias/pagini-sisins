@@ -124,8 +124,6 @@ data class Participante(
         this.resposta5_c1 = resposta5_c1.toInt()
         val resposta6_c1: String by respostas
         this.resposta6_c1 = resposta6_c1.toInt()
-        val redacao1: String by respostas
-        this.redacao1 = redacao1
     }
 
     fun atualizaProva2(respostasPack: Map<String, List<String>>){
@@ -142,7 +140,5 @@ data class Participante(
         this.resposta5_c2 = resposta5_c2.toInt()
         val resposta6_c2: String by respostas
         this.resposta6_c2 = resposta6_c2.toInt()
-        val redacao2: String by respostas
-        this.redacao2 = redacao2
     }
 }
