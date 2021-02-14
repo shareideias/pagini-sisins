@@ -6,6 +6,10 @@ fieldset{
     border: 0;
 }
 
+.desativado{
+    display: none;
+}
+
 .inputInfluencer{
     display: flex;
     align-items: center;

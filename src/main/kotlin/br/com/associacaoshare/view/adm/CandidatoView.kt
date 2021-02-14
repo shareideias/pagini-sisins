@@ -56,7 +56,10 @@ class CandidatoView(private val errormsg: String?, private val participante: Par
             }
             p {
                 b { +"Escola a qual estuda se for do ensino médio:" }
-                br { +participante.escola }
+                if(participante.escola == "")
+                    br { +"Não foi respondido." }
+                else
+                    br { +participante.escola }
             }
             p {
                 b { +"Data de nascimento:" }
@@ -83,14 +86,14 @@ class CandidatoView(private val errormsg: String?, private val participante: Par
                     br { +"Não" }
                 }
             }
-            p {
-                b { +"Ciente de que as aulas acontecem na UFSCar Sorocaba:" }
-                if (participante.local_aulas == 1) {
-                    br { +"Sim" }
-                } else if (participante.local_aulas == 2) {
-                    br { +"Não" }
-                }
-            }
+//            p {
+//                b { +"Ciente de que as aulas acontecem na UFSCar Sorocaba:" }
+//                if (participante.local_aulas == 1) {
+//                    br { +"Sim" }
+//                } else if (participante.local_aulas == 2) {
+//                    br { +"Não" }
+//                }
+//            }
             p {
                 b { +"Disponibilidade de tempo:" }
                 br { +participante.disponibilidade }

@@ -25,7 +25,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
         div("row") {
             form("EditaProc", classes = "col s12", method = FormMethod.post) {
                 div("input-field col s12 mb-0") {
-                    +"Responda em qual categoria se encaixa"
+                    +"* Responda em qual categoria se encaixa"
                     label {
                         htmlFor = "selectCategoria"
                     }
@@ -61,7 +61,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 div("input-field col s12 mb-0") {
                     label("perguntas"){
                         htmlFor = "inputNome"
-                        +"Nome completo"
+                        +"* Nome completo"
                     }
                     input(InputType.text, classes = "validate") {
                         id = "inputNome"
@@ -74,7 +74,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0 perguntas") {
-                    +"Data de nascimento(idade mínima: 16 anos)"
+                    +"* Data de nascimento(idade mínima: 16 anos)"
                     label{
                         htmlFor = "inputData_nascimento"
 
@@ -90,7 +90,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 div("input-field col s12 mb-0") {
                     label("perguntas"){
                         htmlFor = "inputTelefone"
-                        +"DDD + telefone"
+                        +"* DDD + telefone"
                     }
                     input(InputType.tel, classes = "validate") {
                         id = "inputTelefone"
@@ -105,7 +105,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 div("input-field col s12 mb-0") {
                     label("perguntas"){
                         htmlFor = "inputEmail"
-                        +"Email"
+                        +"* Email"
                     }
                     input(InputType.email , classes = "validate") {
                         id = "inputEmail"
@@ -120,7 +120,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 div("input-field col s12 mb-0") {
                     label("perguntas"){
                         htmlFor = "inputPassword"
-                        +"Senha"
+                        +"* Senha"
                     }
                     input(InputType.password, classes = "validate") {
                         id = "inputPassword"
@@ -129,7 +129,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0") {
-                    +"Você é estudante? E/ou trabalha?"
+                    +"* Você é estudante? E/ou trabalha?"
                     label {
                         htmlFor = "selectTipoSemVinculo"
                     }
@@ -169,7 +169,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0") {
-                    +"Qual o seu vínculo com a UFSCAR?"
+                    +"* Qual o seu vínculo com a UFSCAR?"
                     label {
                         htmlFor = "selectVinculoUfscar"
                     }
@@ -224,7 +224,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                     input(InputType.text , classes = "validate") {
                         id = "inputEscola"
                         name = "escola"
-                        required = true
+                        required = false
                         if(participante.escola.isNotEmpty()) {
                             value = participante.escola
                         }
@@ -232,7 +232,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0") {
-                    +"Você leu atentamento o edital?"
+                    +"* Você leu atentamento o edital?"
                     label("perguntas") {
                         htmlFor = "inputEdital"
                     }
@@ -259,7 +259,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0") {
-                    +"Como você ficou sabendo da Share?"
+                    +"* Como você ficou sabendo da Share?"
                 }
 
                 fieldSet {
@@ -346,7 +346,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0") {
-                    +"Você já esteve na UFSCar antes?"
+                    +"* Você já esteve na UFSCar antes?"
                     label("perguntas") {
                         htmlFor = "inputEsteve_ufscar"
                     }
@@ -371,8 +371,8 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                     }
                 }
 
-                div("input-field col s12 mb-0") {
-                    +"Você está ciente de que as aulas da Share acontecem na UFSCar Sorocaba, próximo à Salto de Pirapora?"
+                div("desativado") {
+                    +"* Você está ciente de que as aulas da Share acontecem na UFSCar Sorocaba, próximo à Salto de Pirapora?"
                     label("perguntas") {
                         htmlFor = "inputLocal_aulas"
                     }
@@ -380,7 +380,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                     select {
                         id = "selectLocal_aulas"
                         name = "local_aulas"
-                        required = true
+                        required = false
                         option {
                             value = "1"
                             if(participante.esteve_ufscar == 1) {
@@ -399,7 +399,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0 perguntas") {
-                    +"Como voce descreveria a sua disponibilidade de tempo atualmente?"
+                    +"* Como voce descreveria a sua disponibilidade de tempo atualmente?"
                     label{
                         htmlFor = "inputDisponibilidade"
 
@@ -415,7 +415,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0") {
-                    +"Seu principal objetivo com o curso é:"
+                    +"* Seu principal objetivo com o curso é:"
                     label("perguntas") {
                         htmlFor = "inputObjetivo"
                     }
@@ -483,7 +483,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0") {
-                    +"Voce já se inscreveu em algum curso da share?"
+                    +"* Voce já se inscreveu em algum curso da share?"
                     label("perguntas") {
                         htmlFor = "inputCursou_share"
                     }
@@ -523,7 +523,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                 }
 
                 div("input-field col s12 mb-0") {
-                    +"Você está ciente de que desistir do curso, sem explicação plausível, impossibilitará o candidato de se inscrever para qualquer outro curso da Share, além de prejudicar sua turma?"
+                    +"* Você está ciente de que desistir do curso, sem explicação plausível, impossibilitará o candidato de se inscrever para qualquer outro curso da Share, além de prejudicar sua turma?"
                     label("perguntas") {
                         htmlFor = "selectDesistencia"
                     }

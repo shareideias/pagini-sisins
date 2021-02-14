@@ -24,11 +24,11 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
         if (interruptor == 0) {
             h4 { +"As inscrições estão fechadas no momento. Confira as datas do próximo processo seletivo para alunos." }
         } else if (interruptor == 1){
-            p("obscadastro"){+"* Preencha obrigatoriamente todos os campos."}
+            p("obscadastro"){+"Preencha obrigatoriamente os campos com *."}
             div("row") {
                 form("CadastroProc", classes = "col s12", method = FormMethod.post) {
                     div("input-field col s12 mb-0") {
-                        +"Responda em qual categoria se encaixa"
+                        +"* Responda em qual categoria se encaixa"
                         label {
                             htmlFor = "selectCategoria"
                         }
@@ -61,7 +61,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     div("input-field col s12 mb-0") {
                         label("perguntas") {
                             htmlFor = "inputNome"
-                            +"Nome completo"
+                            +"* Nome completo"
 
                         }
                         input(InputType.text, classes = "validate") {
@@ -72,7 +72,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0 perguntas") {
-                        +"Data de nascimento (idade mínima: 16 anos)"
+                        +"* Data de nascimento (idade mínima: 16 anos)"
                         label {
                             htmlFor = "inputData_nascimento"
 
@@ -87,7 +87,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     div("input-field col s12 mb-0") {
                         label("perguntas") {
                             htmlFor = "inputTelefone"
-                            +"DDD + telefone"
+                            +"* DDD + telefone"
                         }
                         input(InputType.tel, classes = "validate") {
                             id = "inputTelefone"
@@ -99,7 +99,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     div("input-field col s12 mb-0") {
                         label("perguntas") {
                             htmlFor = "inputEmail"
-                            +"Email"
+                            +"* Email"
                         }
                         input(InputType.email, classes = "validate") {
                             id = "inputEmail"
@@ -111,7 +111,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     div("input-field col s12 mb-0") {
                         label("perguntas") {
                             htmlFor = "inputPassword"
-                            +"Senha"
+                            +"* Senha"
 
                         }
                         input(InputType.password, classes = "validate") {
@@ -122,7 +122,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"Você é estudante? E/ou trabalha?"
+                        +"* Você é estudante? E/ou trabalha?"
                         label {
                             htmlFor = "selectTipoSemVinculo"
                         }
@@ -155,7 +155,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"Qual o seu vínculo com a UFSCAR?"
+                        +"* Qual o seu vínculo com a UFSCAR?"
                         label {
                             htmlFor = "selectVinculoUfscar"
                         }
@@ -204,12 +204,12 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                         input(InputType.text, classes = "validate") {
                             id = "inputEscola"
                             name = "escola"
-                            required = true
+                            required = false
                         }
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"Você leu atentamento o edital?"
+                        +"* Você leu atentamento o edital?"
                         label("perguntas") {
                             htmlFor = "inputEdital"
 
@@ -236,7 +236,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"Como você ficou sabendo da Share?"
+                        +"* Como você ficou sabendo da Share?"
                     }
 
                     fieldSet {
@@ -312,7 +312,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"Você já esteve na UFSCar antes?"
+                        +"* Você já esteve na UFSCar antes?"
                         label("perguntas") {
                             htmlFor = "inputEsteve_ufscar"
                         }
@@ -336,8 +336,8 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                         }
                     }
 
-                    div("input-field col s12 mb-0") {
-                        +"Você está ciente de que as aulas dos cursos presenciais da Share acontecem na UFSCar Sorocaba, próximo à Salto de Pirapora?"
+                    div("desativado") {
+                        +"* Você está ciente de que as aulas dos cursos presenciais da Share acontecem na UFSCar Sorocaba, próximo à Salto de Pirapora?"
                         label("perguntas") {
                             htmlFor = "inputLocal_aulas"
                         }
@@ -345,7 +345,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                         select {
                             id = "selectLocal_aulas"
                             name = "local_aulas"
-                            required = true
+                            required = false
                             option {
                                 disabled = true
                                 selected = true
@@ -363,7 +363,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0 perguntas") {
-                        +"Como voce descreveria a sua disponibilidade de tempo atualmente?"
+                        +"* Como voce descreveria a sua disponibilidade de tempo atualmente?"
                         label {
                             htmlFor = "inputDisponibilidade"
 
@@ -376,7 +376,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"Seu principal objetivo com o curso é:"
+                        +"* Seu principal objetivo com o curso é:"
                         label("perguntas") {
                             htmlFor = "inputObjetivo"
                         }
@@ -425,7 +425,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"Voce já se inscreveu em algum curso da share?"
+                        +"* Voce já se inscreveu em algum curso da share?"
                         label("perguntas") {
                             htmlFor = "inputCursou_share"
                         }
@@ -458,7 +458,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"Você está ciente de que desistir do curso, sem explicação plausível, "
+                        +"* Você está ciente de que desistir do curso, sem explicação plausível, "
                         +"impossibilitará o candidato de se inscrever para qualquer outro curso da Share, "
                         +"além de prejudicar sua turma?"
                         label("perguntas") {

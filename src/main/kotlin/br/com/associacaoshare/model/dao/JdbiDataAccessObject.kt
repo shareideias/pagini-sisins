@@ -903,7 +903,8 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
         val esteve_ufscar: String by respostas
         val esteveUfscarInt: Int = esteve_ufscar.toInt()
         val local_aulas: String by respostas
-        val localAulasInt: Int = local_aulas.toInt()
+        // localAulas foi desativado por causa das aulas EAD
+        val localAulasInt: Int = -1
         val disponibilidade: String by respostas
         val objetivo: String by respostas
         val objetivoInt: Int = objetivo.toInt()
@@ -949,7 +950,7 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
                     .bind("hash", if (password.isNullOrEmpty()) null else hash)
                     .bind("tipo_sem_vinculo", tipoSemVinculoInt)
                     .bind("vinculo_ufscar", vinculoUfscarInt)
-                    .bind("escola", if (escola.isNullOrEmpty()) null else escola)
+                    .bind("escola", if (escola.isNullOrEmpty()) "" else escola)
                     .bind("edital", editalInt)
                     .bind("onde_conheceu", ondeConheceuInt)
                     .bind("influencer", influencerString)

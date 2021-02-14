@@ -70,7 +70,7 @@ data class Participante(
         val vinculo_ufscar: String by respostas
         this.vinculo_ufscar = vinculo_ufscar.toInt()
         val escola: String by respostas
-        this.escola = escola
+        this.escola = if(escola.isNullOrEmpty()) "" else escola
         val edital: String by respostas
         val editalInt: Int = edital.toInt()
         this.edital = editalInt
@@ -84,7 +84,8 @@ data class Participante(
         val esteveUfscarInt: Int = esteve_ufscar.toInt()
         this.esteve_ufscar = esteveUfscarInt
         val local_aulas: String by respostas
-        val localAulasInt: Int = local_aulas.toInt()
+        // local aulas foi desativado devido ao EAD
+        val localAulasInt: Int = -1
         this.local_aulas = localAulasInt
         val disponibilidade: String by respostas
         this.disponibilidade = disponibilidade
