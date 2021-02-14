@@ -275,7 +275,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                                     checked = true
                                 }
                             }
-                            span { +"Instagram" }
+                            span { +"Mídias Sociais (Facebook, Whatsapp, etc)" }
                         }
                     }
                     p {
@@ -289,7 +289,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                                     checked = true
                                 }
                             }
-                            span { +"Facebook" }
+                            span { +"Recomendação" }
                         }
                     }
                     p {
@@ -303,7 +303,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                                     checked = true
                                 }
                             }
-                            span { +"WhatsApp" }
+                            span { +"Outras Mídias (Jornais, Revistas, Televisão)" }
                         }
                     }
                     p {
@@ -317,7 +317,7 @@ class EdicaoView(private val errormsg: String?, private val participante: Partic
                                     checked = true
                                 }
                             }
-                            span { +"amigos/familiares" }
+                            span { +"Outro" }
                         }
                     }
                     p {

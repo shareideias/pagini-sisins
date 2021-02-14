@@ -153,13 +153,13 @@ class CandidatoView(private val errormsg: String?, private val participante: Par
             p {
                 b { +"Como você ficou sabendo da Share?" }
                 if (participante.onde_conheceu == 1) {
-                    br { +"Instagram" }
+                    br { +"Mídias Sociais (Facebook, Whatsapp, etc)" }
                 } else if (participante.onde_conheceu == 2) {
-                    br { +"Facebook" }
+                    br { +"Recomendação" }
                 } else if (participante.onde_conheceu == 3) {
-                    br { +"WhatsApp" }
+                    br { +"Outras Mídias (Jornais, Revistas, Televisão)" }
                 } else if (participante.onde_conheceu == 4) {
-                    br { +"amigos/familiares" }
+                    br { +"Outro" }
                 } else if (participante.onde_conheceu == 5) {
                     br { +"influencer: ${participante.influencer}" }
                 }

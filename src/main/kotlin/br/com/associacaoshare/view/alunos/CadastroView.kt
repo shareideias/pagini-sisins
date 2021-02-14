@@ -210,6 +210,10 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
 
                     div("input-field col s12 mb-0") {
                         +"* Você leu atentamento o edital?"
+                        a("https://drive.google.com/file/d/15ryN0XemqG207WezRh-hLpvd-OQsgmYn/view", target = "_blank"){
+                            rel="noreferrer"
+                            +"  clique aqui para ler!"
+                        }
                         label("perguntas") {
                             htmlFor = "inputEdital"
 
@@ -249,7 +253,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                                     value = "1"
                                     required = true
                                 }
-                                span { +"Instagram" }
+                                span { +"Mídias Sociais (Facebook, Whatsapp, etc)" }
                             }
                         }
                         div (classes="inputInfluencer") {
@@ -260,7 +264,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                                     value = "2"
                                     required = true
                                 }
-                                span { +"Facebook" }
+                                span { +"Recomendação" }
                             }
                         }
                         div (classes="inputInfluencer") {
@@ -271,7 +275,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                                     value = "3"
                                     required = true
                                 }
-                                span { +"WhatsApp" }
+                                span { +"Outras Mídias (Jornais, Revistas, Televisão)" }
                             }
                         }
                         div (classes="inputInfluencerPenultimo"){
@@ -282,7 +286,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                                     value = "4"
                                     required = true
                                 }
-                                span { +"Amigos/Familiares" }
+                                span { +"Outro" }
                             }
                         }
                         div (classes="inputInfluencer") {

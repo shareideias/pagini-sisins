@@ -48,9 +48,14 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                 +"$errormsg"
             }
         }
+        div("welcome"){
+            h5("center") { +"Olá, ${participante?.nome}, escolha 1 ou 2 cursos abaixo. Os resultados serão divulgados no dia 26 de fevereiro." }
+
+        }
 
         div("row") {
             div("col s12 m0 l3")
+
             div("col s12 m12 l3") {
                 div("card") {
                     div("card-image") {
@@ -64,11 +69,11 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                 }
 
                 if (resultado == 0) {
-                    h5 { +"Inscrições:" }
-
-
                     if (interruptor == 0)
                         h6 { +"As inscrições estão fechadas no momento." }
+                    else{
+                        h5 { +"Faça sua inscrição aqui:" }
+                    }
 
                     ul("collection with-header") {
 
@@ -163,8 +168,6 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
                             }
                         }
                     }
-                    h6 { +"Obs: A segunda opção é direcionado automaticamente" }
-                    h6 { +" para a lista de espera." }
                 } else {
                     h5 { +"Resultado:" }
 
