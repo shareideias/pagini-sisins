@@ -29,6 +29,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         get("desistencias", ::desistencias, roles(AVALIADOR))
 
         get("inscricoesgerais", ::inscricoesgerais, roles(AVALIADOR))
+        get("influencers", ::influencers, roles(AVALIADOR))
 
         get("candidato", ::candidato, roles(AVALIADOR))
         post("CandidatoProc", ::candidatoProc, roles(AVALIADOR))
@@ -164,8 +165,18 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             ctx.cookie("errorMsg", "", 0)
 
         val inscritos = dao.allParticipante()
-        var qtdParticipantes = dao.countParticipante()
+        val qtdParticipantes = dao.countParticipante()
         InscricoesGeraisView(errormsg, inscritos, qtdParticipantes).render(ctx)
+    }
+
+    private fun influencers(ctx: Context) {
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
+        if (errormsg != null)
+            ctx.cookie("errorMsg", "", 0)
+
+        val inscritos = dao.countInfluencer()
+        val qtdParticipantes = dao.countParticipante()
+        InfluencerView(errormsg, inscritos, qtdParticipantes).render(ctx)
     }
 
     private fun candidato(ctx: Context){

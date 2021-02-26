@@ -49,6 +49,12 @@ class CursosView(private val errormsg: String?, private val cursos: List<Curso>,
             }
         }
 
+        div("botaofechar") {
+            a("/inscricoes/adm/influencers", classes = "entrar waves-effect waves-light btn") {
+                +"Influencer"
+            }
+        }
+
         div("container cards_recente") {
             div("row") {
                 cursos.forEach {

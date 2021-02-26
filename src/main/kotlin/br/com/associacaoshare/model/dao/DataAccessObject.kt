@@ -50,6 +50,7 @@ interface DataAccessObject {
     fun getResultado(): Int
 
     fun countParticipante(): Int
+    fun countInfluencer(): List<Influencer>
     fun countParticipantebyCurso(curso: Int): Int
 
     fun allAvaliador(): List<Avaliador>

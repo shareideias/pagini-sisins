@@ -367,7 +367,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0 perguntas") {
-                        +"* Como voce descreveria a sua disponibilidade de tempo atualmente?"
+                        +"* Como você descreveria a sua disponibilidade de tempo atualmente?"
                         label {
                             htmlFor = "inputDisponibilidade"
 
@@ -429,7 +429,7 @@ class CadastroView (private val errormsg: String?, private var interruptor: Int)
                     }
 
                     div("input-field col s12 mb-0") {
-                        +"* Voce já se inscreveu em algum curso da share?"
+                        +"* Você já se inscreveu em algum curso da share?"
                         label("perguntas") {
                             htmlFor = "inputCursou_share"
                         }

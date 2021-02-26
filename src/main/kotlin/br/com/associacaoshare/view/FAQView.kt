@@ -105,7 +105,7 @@ class FAQView(override val model: IndexViewModel) : PagIniView(INDEX) {
                             +"""O pagamento da taxa de matrícula é obrigatório?"""
                         }
                         div(classes = "collapsible-body") {
-                            span { +"""Somente em cursos presenciais, exceto no caso de o aprovado apresente-se em situação de carência financeira, neste caso, pedimos que entre em contato conosco.""" }
+                            span { +"""Somente em cursos presenciais e a distância, exceto no caso de o aprovado apresente-se em situação de carência financeira, neste caso, pedimos que entre em contato conosco.""" }
                         }
                     }
 

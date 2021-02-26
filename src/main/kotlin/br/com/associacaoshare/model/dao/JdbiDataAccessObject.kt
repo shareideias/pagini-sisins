@@ -614,6 +614,14 @@ class JdbiDataAccessObject(url: String) : DataAccessObject {
         }
     }
 
+    override fun countInfluencer(): List<Influencer>  {
+        return jdbi.withHandleUnchecked {
+            it.createQuery("select count(influencer), influencer from sisins_participante group by influencer")
+                    .mapTo<Influencer>()
+                    .list()
+        }
+    }
+
     override fun countParticipantebyCurso(curso: Int): Int {
         return jdbi.withHandleUnchecked {
             it.createQuery("SELECT COUNT(id) FROM sisins_participante WHERE (curso1_id = :id OR curso2_id = :id)")
