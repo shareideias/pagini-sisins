@@ -49,7 +49,7 @@ class InscricoesAlunoView(private val errormsg: String?, private val participant
             }
         }
         div("welcome"){
-            h5("center") { +"Olá, ${participante?.nome}, escolha 1 ou 2 cursos abaixo. Os resultados serão divulgados no dia 26 de fevereiro." }
+            h5("center") { +"Olá, ${participante?.nome}, escolha 1 ou 2 cursos abaixo" }
 
         }
 

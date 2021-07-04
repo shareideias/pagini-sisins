@@ -29,9 +29,6 @@ class ProvaView(private val errormsg: String?, private val participante: Partici
             span(classes = "textinho") {
                 +"A partir de agora você responderá um breve questionário que servirá para identificarmos "
                 +"se você realmente possui o  conhecimento necessário para ingressar no nível intermediário ou avançado. "
-                +"Fique tranquilo, pois mesmo que você não saiba responder a maioria das perguntas você ainda terá a vaga "
-                +"garantida em um nível mais baixo, caso seja selecionado. Por ser uma prova apenas para avaliarmos seus conhecimentos "
-                +"pedimos para que realmente deixe em branco as questões que você não souber."
             }
         }
         form("ProvaProc", method = FormMethod.post) {
