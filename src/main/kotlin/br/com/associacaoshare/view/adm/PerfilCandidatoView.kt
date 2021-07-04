@@ -184,7 +184,10 @@ class PerfilCandidatoView(private val errormsg: String?, private val participant
                         }
 
                         1 -> b("light-green-text text-accent-3") {
-                            +"Aprovado"
+                            +"1 chamada"
+                        }
+                        5 -> b("light-green-text text-accent-3") {
+                            +"2 chamada"
                         }
                         2 -> b("yellow-text text-accent-3") {
                             +"Lista de Espera"
@@ -230,7 +233,10 @@ class PerfilCandidatoView(private val errormsg: String?, private val participant
                         }
 
                         1 -> b("light-green-text text-accent-3") {
-                            +"Aprovado"
+                            +"1 chamada"
+                        }
+                        5 -> b("light-green-text text-accent-3") {
+                            +"2 chamada"
                         }
                         2 -> b("yellow-text text-accent-3") {
                             +"Lista de Espera"

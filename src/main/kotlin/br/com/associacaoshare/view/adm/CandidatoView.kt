@@ -315,8 +315,11 @@ class CandidatoView(private val errormsg: String?, private val participante: Par
                             +"Não avaliado"
                         }
 
-                        1 -> b("light-green-text text-accent-3") {
-                            +"Aprovado"
+                        1 -> b("green-text text-accent-3") {
+                            +"1 chamada"
+                        }
+                        5 -> b("light-green-text text-accent-3") {
+                            +"2 chamada"
                         }
                         2 -> b("yellow-text text-accent-3") {
                             +"Lista de Espera"
@@ -361,8 +364,11 @@ class CandidatoView(private val errormsg: String?, private val participante: Par
                             +"Não avaliado"
                         }
 
-                        1 -> b("light-green-text text-accent-3") {
-                            +"Aprovado"
+                        1 -> b("green-text text-accent-3") {
+                            +"1 chamada"
+                        }
+                        5 -> b("light-green-text text-accent-3") {
+                            +"2 chamada"
                         }
                         2 -> b("yellow-text text-accent-3") {
                             +"Lista de Espera"
@@ -391,7 +397,10 @@ class CandidatoView(private val errormsg: String?, private val participante: Par
         br
 
         a("/inscricoes/adm/aprova?id=${participante.id}&&idC=${curso.id}", classes = "botao waves-effect waves-light green btn-large") {
-            +"Aprovar"
+            +"1 chamada"
+        }
+        a("/inscricoes/adm/aprova2?id=${participante.id}&&idC=${curso.id}", classes = "botao waves-effect waves-light light-green btn-large") {
+            +"2 chamada"
         }
         a("/inscricoes/adm/listadeespera?id=${participante.id}&&idC=${curso.id}", classes = "botao waves-effect waves-light yellow btn-large") {
             +"Lista de espera"

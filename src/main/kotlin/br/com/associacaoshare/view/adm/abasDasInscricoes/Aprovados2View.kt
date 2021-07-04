@@ -6,7 +6,7 @@ import br.com.associacaoshare.view.base.SisInsAdmView
 import io.javalin.http.Context
 import kotlinx.html.*
 
-class EsperaView(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
+class Aprovados2View(private val errormsg: String?, private val curso: Curso, private val inscritos: List<Participante>?, private var qtdParticipantes: Int) : SisInsAdmView() {
     override val pageTitle: String = "Cursos"
 
     override fun MAIN.renderMain(ctx: Context) {
@@ -17,21 +17,21 @@ class EsperaView(private val errormsg: String?, private val curso: Curso, privat
                 +"$errormsg"
             }
         }
-        
-        var qtdEspera = 0
+
+        var qtdAprovados = 0
         inscritos?.forEach {
             when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-                2 -> {qtdEspera++}
+                5 -> {qtdAprovados++}
             }
         }
 
-        h3 { +"Lista de Espera (${qtdEspera})" }
+        h3 { +"Aprovados 2 chamada (${qtdAprovados})" }
         h4 { +curso.nome }
         h5 { +"${curso.horario}" }
 
         nav("abas-container") {
             div("abas-content") {
-                div("col s12") {
+                div {
                     a("/inscricoes/adm/inscricoes?id=${curso.id}", classes = "breadcrumb") { span("orange btn-small") { +"Todos" } }
                     a("/inscricoes/adm/naoAvaliados?id=${curso.id}", classes = "breadcrumb") { span("gray btn-small") { +"Não avaliados" } }
                     a("/inscricoes/adm/aprovados?id=${curso.id}", classes = "breadcrumb") { span("green btn-small") { +"1 chamada" } }
@@ -48,17 +48,17 @@ class EsperaView(private val errormsg: String?, private val curso: Curso, privat
             div("col 14 m6 s12") {
                 inscritos?.forEach {
                     when (if (it.curso1_id == curso.id) it.resultado_c1 else it.resultado_c2) {
-                        2 -> {
+                        5 -> {
                             ul("collection") {
                                 li("collection-item avatar") {
-                                    i("material-icons circle yellow") {
+                                    i("material-icons circle light-green") {
                                         +"account_circle"
                                     }
                                     span("title") {
                                         +it.nome
                                     }
                                     p("statusavaliacao") {
-                                        +"Lista de espera"
+                                        +"2 chamada"
                                     }
                                     a("/inscricoes/adm/candidato?id=${it.id}&&idC=${curso.id}", classes = "secondary-content") {
                                         i("material-icons") {

@@ -24,6 +24,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         get("inscricoes", ::inscricoes, roles(AVALIADOR))
         get("naoAvaliados", ::naoAvaliados, roles(AVALIADOR))
         get("aprovados", ::aprovados, roles(AVALIADOR))
+        get("aprovados2", ::aprovados2, roles(AVALIADOR))
         get("espera", ::espera, roles(AVALIADOR))
         get("reprovados", ::reprovados, roles(AVALIADOR))
         get("desistencias", ::desistencias, roles(AVALIADOR))
@@ -57,6 +58,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         get("ocultarresultados", ::ocultarresultados, roles(AVALIADOR))
 
         get("aprova", ::aprova, roles(AVALIADOR))
+        get("aprova2", ::aprova2, roles(AVALIADOR))
         get("listadeespera", ::listadeespera, roles(AVALIADOR))
         get("desistencia", ::desistencia, roles(AVALIADOR))
         get("reprova", ::reprova, roles(AVALIADOR))
@@ -114,6 +116,20 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         val inscritos = dao.getParticipantesbyCurso(curso.id)
         var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
         AprovadosView(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
+    }
+
+    private fun aprovados2(ctx: Context) {
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
+        if (errormsg != null)
+            ctx.cookie("errorMsg", "", 0)
+        val curso = ctx.queryParam("id")?.toInt()?.let{dao.getCurso(it)}
+        if (curso == null) {
+            ctx.redirect("/inscricoes/adm")
+            return
+        }
+        val inscritos = dao.getParticipantesbyCurso(curso.id)
+        var qtdParticipantes = dao.countParticipantebyCurso(curso.id)
+        Aprovados2View(errormsg, curso, inscritos, qtdParticipantes).render(ctx)
     }
 
     private fun espera(ctx: Context) {
@@ -381,6 +397,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
         ctx.redirect("/inscricoes/adm")
     }
 
+    // lista de aprovado primeira chamada
     private fun aprova(ctx: Context){
         val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
         if (errormsg != null)
@@ -397,6 +414,26 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
                 participante.id.let { dao.updateResultado2(it, 1) }
 
             ctx.redirect("aprovados?id=${curso.id}")
+        }
+    }
+
+    // lista de aprovado segunda chamada
+    private fun aprova2(ctx: Context){
+        val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }
+        if (errormsg != null)
+            ctx.cookie("errorMsg", "", 0)
+
+        val participante = ctx.queryParam("id")?.toInt()?.let{dao.getParticipante(it)}
+        val curso = ctx.queryParam("idC")?.toInt()?.let{dao.getCurso(it)}
+
+        if (participante != null && curso != null) {
+            if(participante.curso1_id == curso.id)
+                participante.id.let { dao.updateResultado1(it, 5) }
+
+            if(participante.curso2_id == curso.id)
+                participante.id.let { dao.updateResultado2(it, 5) }
+
+            ctx.redirect("aprovados2?id=${curso.id}")
         }
     }
 
@@ -456,6 +493,7 @@ class AdminSisinsController(override val kodein: Kodein) : EndpointGroup, Kodein
             ctx.redirect("reprovados?id=${curso.id}")
         }
     }
+
 
     private fun deleteuser(ctx: Context){
         val errormsg = ctx.cookie("errorMsg")?.let{ URLDecoder.decode(it, utf8) }

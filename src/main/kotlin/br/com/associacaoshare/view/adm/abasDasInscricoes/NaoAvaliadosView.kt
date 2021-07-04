@@ -34,7 +34,8 @@ class NaoAvaliadosView(private val errormsg: String?, private val curso: Curso, 
                 div("col s12") {
                     a("/inscricoes/adm/inscricoes?id=${curso.id}", classes = "breadcrumb") { span("orange btn-small") { +"Todos" } }
                     a("/inscricoes/adm/naoAvaliados?id=${curso.id}", classes = "breadcrumb") { span("gray btn-small") { +"Não avaliados" } }
-                    a("/inscricoes/adm/aprovados?id=${curso.id}", classes = "breadcrumb") { span("green btn-small") { +"Aprovados" } }
+                    a("/inscricoes/adm/aprovados?id=${curso.id}", classes = "breadcrumb") { span("green btn-small") { +"1 chamada" } }
+                    a("/inscricoes/adm/aprovados2?id=${curso.id}", classes = "breadcrumb") { span("light-green btn-small") { +"2 chamada" } }
                     a("/inscricoes/adm/espera?id=${curso.id}", classes = "breadcrumb") { span("yellow darken-2 btn-small") { +"Lista de Espera" } }
                     a("/inscricoes/adm/desistencias?id=${curso.id}", classes = "breadcrumb") { span("blue btn-small") { +"Desistências" } }
                     a("/inscricoes/adm/reprovados?id=${curso.id}", classes = "breadcrumb") { span("red btn-small") { +"Reprovados" } }
